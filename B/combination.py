@@ -16,6 +16,8 @@ second = int(values[1])
 
 print(npr(first,second))
 
+# 
+
 '''
 Ex)
 4 2
