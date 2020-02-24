@@ -1,26 +1,22 @@
+from collections import Counter
+
 class InventoryAllocator():
     def __init__(self, order, inventory):
         self.order = order
         self.inventory = inventory
-        order_list = []
 
     def allocation(self):
-        total_inventory = {}
-        # if not order or not self.inventory:
-        #     return []
         print(order, inventory)
-        # for item in inventory:
-        #     self.parse_inventory(item)
+
+        total_inventory = {}
         for x in inventory:
-            self.parse_inventory(x)
+            total_inventory = Counter(total_inventory) + Counter(x['inventory'])
             
-            
-            # self.calculate_inventory(key)
-            # if(not(self.check_inventory_have_item(key))):
-            #     return []
+        print(total_inventory)
+        
 
     def parse_inventory(self, item):
-        print(item)
+        i = 4
 
     def calculate_inventory(self, product):
         for x in order[product]:
