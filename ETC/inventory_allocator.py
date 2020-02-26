@@ -49,6 +49,7 @@ class InventoryAllocator():
         temp_value = each_warehouse['inventory'].get(item) - self.order.get(item)
         swap_value = self.order.get(item)
 
+        #If Inventory doesn't have enough stock
         if(temp_value <= 0):
             self.order[item] = self.order.get(item) - each_warehouse['inventory'].get(item)
             if each_warehouse['name'] in self.return_dict:
@@ -58,6 +59,7 @@ class InventoryAllocator():
                     self.return_dict[each_warehouse['name']][item] = each_warehouse['inventory'].get(item)
             else:
                 self.return_dict[each_warehouse['name']] = {item : each_warehouse['inventory'].get(item) }
+        #If Inventory has enough stock        
         else:
             self.order[item] = 0
             if each_warehouse['name'] in self.return_dict:
