@@ -4,7 +4,7 @@ class InventoryAllocator():
     def __init__(self, order, inventory):
         self.order = order
         self.inventory = inventory
-        is_order_valid = True
+        self.return_dict = {}
 
     def run_allocation(self):
         print(order, inventory)
@@ -16,7 +16,7 @@ class InventoryAllocator():
             
         #print(total_inventory)
         output_inventory = self.process_order(total_inventory)
-        print(output_inventory)
+        print(self.return_dict)
 
     def merge_inventories(self):
         temp_inventory = {}
@@ -36,23 +36,30 @@ class InventoryAllocator():
             for x in self.inventory:
                 if item in x['inventory']:
                     swap_inv = self.calculate_order(item, x)
-                    temp_inventory = {**temp_inventory, **swap_inv}
+                    if swap_inv is not None:
+                        temp_inventory = {**temp_inventory, **swap_inv}
 
         return temp_inventory
 
     def calculate_order(self, item, each_warehouse):
         #{x.get('name'): {item: (self.order.get(item) - x['inventory'].get(item))} }
-        return_dict = {}
         if(self.order.get(item) == 0):
-            return {}
+            return
             
         temp_value = each_warehouse['inventory'].get(item) - self.order.get(item)
-
+        swap_value = self.order.get(item)
         if(temp_value <= 0):
-            print(order)
-            swap_value = self.order.get(item)
             self.order[item] = self.order.get(item) - each_warehouse['inventory'].get(item)
-            return {each_warehouse['name'] : {item : swap_value}}
+            if each_warehouse['name'] in self.return_dict:
+                self.return_dict[each_warehouse['name']] = self.return_dict[each_warehouse['inventory']].get(item) + each_warehouse['inventory'].get(item)
+            else:
+                self.return_dict[each_warehouse['name']] = {item : swap_value}
+        else:
+            self.order[item] = 0
+            if each_warehouse['name'] in self.return_dict:
+                self.return_dict[each_warehouse['name']] = self.return_dict[each_warehouse['inventory']].get(item) + swap_value
+            else:
+                self.return_dict[each_warehouse['name']] = {item : swap_value}
        
 
     #Call
