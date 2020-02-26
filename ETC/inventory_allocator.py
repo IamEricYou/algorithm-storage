@@ -46,18 +46,25 @@ class InventoryAllocator():
         if(self.order.get(item) == 0):
             return
             
-        temp_value = each_warehouse['inventory'].get(item) - self.order.get(item)
+        temp_value = each_warehouse['inventory'].get(item) - self.order.get(item) #4
         swap_value = self.order.get(item)
+        print("Return",self.return_dict)
         if(temp_value <= 0):
             self.order[item] = self.order.get(item) - each_warehouse['inventory'].get(item)
             if each_warehouse['name'] in self.return_dict:
-                self.return_dict[each_warehouse['name']] = self.return_dict[each_warehouse['inventory']].get(item) + each_warehouse['inventory'].get(item)
+                if item in self.return_dict[each_warehouse['name']]:
+                    self.return_dict[each_warehouse['name']] = {item : (self.return_dict[each_warehouse['inventory']].get(item) + each_warehouse['inventory'].get(item))}
+                else:
+                    self.return_dict[each_warehouse['name']] = {item : each_warehouse['inventory'].get(item) }
             else:
-                self.return_dict[each_warehouse['name']] = {item : swap_value}
+                self.return_dict[each_warehouse['name']] = {item : each_warehouse['inventory'].get(item) }
         else:
             self.order[item] = 0
             if each_warehouse['name'] in self.return_dict:
-                self.return_dict[each_warehouse['name']] = self.return_dict[each_warehouse['inventory']].get(item) + swap_value
+                if item in self.return_dict[each_warehouse['name']]:
+                    self.return_dict[each_warehouse['name']] = {item : self.return_dict[each_warehouse['inventory']].get(item) + temp_value}
+                else:
+                    self.return_dict[each_warehouse['name']] = {item : swap_value}
             else:
                 self.return_dict[each_warehouse['name']] = {item : swap_value}
        
