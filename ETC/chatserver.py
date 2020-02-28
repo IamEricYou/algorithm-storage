@@ -1,3 +1,6 @@
+from gevent import monkey
+monkey.patch_all()
+
 import json
 
 import logging
@@ -7,6 +10,8 @@ from gevent.pywsgi import WSGIServer
 from geventwebsocket.handler import WebSocketHandler
 from geventwebsocket.resource import Resource, WebSocketApplication
 
+from redis import Redis
+import gevent
 
 class MemoryBroker():
     def __init__(self):
@@ -30,9 +35,43 @@ class MemoryBroker():
 
         self.sockets[key].remove(socket)
 
+class RedisMemoryBroker():
+    def __init__(self):
+        self.sockets = {}
+        self.red = Redis(host=u'localhost',port=6379)
+        self.pubsub = self.red.pubsub()
 
-broker = MemoryBroker()
+    def subscribe(self, key, socket):
+        userid = socket.userid.hex
 
+        if key not in self.sockets:
+            self.sockets[key] = dict()
+
+        if userid in self.sockets[key]:
+            return
+
+        self.pubsub.subscribe([key])
+        gevent.spawn(self.handler, key, socket, self.pubsub)
+
+    def handler(self, key, socket, pubsub):
+        userid = socket.userid.hex
+        self.sockets[key][userid] = self.pubsub
+        for connection in self.pubsub.listen():
+            print(connection)
+            if connection['type'] == 'message':
+                data = json.loads(connection['data'])
+                socket.on_broadcast(data)
+        
+    def publish(self, key, data):
+        self.red.publish(key, json.dumps(data))
+
+    def unsubscribe(self, key, socket):
+        if key not in self.sockets:
+            return
+
+        self.pubsub.unsubscribe()
+
+broker = RedisMemoryBroker()
 
 class Chat(WebSocketApplication):
 
@@ -67,4 +106,5 @@ application = Resource([
 
 
 if __name__ == '__main__':
+    print("Server is running on .... /8000")
     WSGIServer('{}:{}'.format('0.0.0.0', 8000), application, handler_class=WebSocketHandler).serve_forever()
