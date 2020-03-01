@@ -28,4 +28,4 @@ def solution(participant, completion):
 
 
 if __name__ == '__main__':
-    print("Programmers problems")
+    print(int(12/19 + 3/1))

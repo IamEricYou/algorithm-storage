@@ -1,6 +1,7 @@
 class ServerConnectionException(Exception):
     pass
 
+
 class PythonTest:
     def __init__(self, num):
         self.num = num
@@ -18,4 +19,4 @@ if __name__ == '__main__':
     try:
         test = PythonTest(3)
     except ServerConnectionException:
-        print("This will be called") 
+        print("This will be called")
