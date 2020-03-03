@@ -26,6 +26,11 @@ def solution(participant, completion):
             return x
     return participant[-1]
 
+def solution_first(n):
+    answer = 0
+    string = sorted(map(int, str(n)), reverse=True)
+    answer = int(''.join([ "%d"%x for x in string]))
+    return answer
 
 if __name__ == '__main__':
     print(int(12/19 + 3/1))
