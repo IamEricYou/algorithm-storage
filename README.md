@@ -4,5 +4,4 @@
 
 Storage for algorithm
 
-Most recent commit
-db91b92
+Most recent Commit db91b92
