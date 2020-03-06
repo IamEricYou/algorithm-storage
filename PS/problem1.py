@@ -34,3 +34,7 @@ def solution_first(n):
 
 if __name__ == '__main__':
     print(int(12/19 + 3/1))
+
+    a = [1,2,3,4,5]
+    print(a[:-1]) #Print list without the last index
+    print(a[::-1]) #print backwards
