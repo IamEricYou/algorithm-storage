@@ -6,6 +6,7 @@ import signal
 import sys
 import time
 
+
 def signal_handler(sig, frame):
     print('Catch signal')
     sys.exit(0)
@@ -13,7 +14,7 @@ def signal_handler(sig, frame):
 
 if __name__ == '__main__':
     outputString = "gunicorn -k \"geventwebsocket.gunicorn.workers.GeventWebSocketWorker\" -w 4 --bind 0:8000 chatserver"
-    starttime=time.time()
+    starttime = time.time()
     serverNumber = input("Put number how many clients you want to make: ")
     os.system(outputString)
     signal.signal(signal.SIGINT, signal_handler)
