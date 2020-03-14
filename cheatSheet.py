@@ -39,3 +39,15 @@ Lambda can be problematic, just use def!
 
 def case_ignore(str): return str.casefold()
 print(sorted(colors, key=case_ignore))
+
+'''
+Conversions
+'''
+
+dict_exam = dict([(1,"Hi"), (2,"hello")])
+print(dict_exam)
+join_exam = ["hello","world"]
+out_first = ''.join(join_exam)
+out_second = ':'.join(join_exam)
+print(out_first)
+print(out_second)
