@@ -15,7 +15,7 @@
 * [Django - AWS deploy & example](https://yjucho1.github.io/django/django-deploy-aws/)
 * [Python - construct WAS](http://dveamer.github.io/backend/PythonWAS.html)
 * [Python + Django + pyenv](https://wayhome25.github.io/django/2017/04/29/python-dev-environments/)
-
+* [Django - basic AWS setup](https://nachwon.github.io/django-deploy-1-aws/)
 ## Inverviewing tips
 
 * [신입 개발자 면접 질문 시리즈](https://www.notion.so/54d624628a634c879cc93d94f54cd2d1)
