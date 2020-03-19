@@ -68,4 +68,47 @@ from collections import deque
 queue = deque(["Eric", "John", "Michael"])
 queue.append("Terry")  # Terry arrives
 queue.popleft() # The second to arrive now leaves = Eric
-queue                           
+queue                    
+
+'''
+Iterable objects
+'''
+
+def li(item):
+    x = 1 
+    while True:
+        yield item * x
+        x += 1
+
+ot = li(2)
+print(ot)
+print(next(ot))
+print(next(ot))
+
+li = iter([1,2,3])
+print(next(li)) #1
+print(next(li)) #2
+print(next(li)) #3
+print(next(li)) #StopIteration
+
+'''
+List operation
+'''
+
+# 문자열 뒤집기
+a = 'abc'
+print(a[::-1]) # 출력: cba
+
+# 리스트 복사
+a = [1, 2, 3]
+b = a[:]
+print(b)      # 출력: [1, 2, 3]
+print(a is b) # 출력: False
+
+c = [[1, 2], [3, 4]]
+d = c[:]
+c[0] = [5, 6] # 리스트 자체는 복사되지만
+c[1][0] = 7   # 리스트의 원소들까지 복사되지는 않으므로 주의해서 사용하자.
+print(c)      # 출력: [[5, 6], [7, 4]]
+print(d)      # 출력: [[1, 2], [7, 4]]
+print('%s, %s, %s' % (c is d, c[0] is d[0], c[1] is d[1])) # 출력: False, False, True
