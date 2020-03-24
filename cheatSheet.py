@@ -112,3 +112,29 @@ c[1][0] = 7   # 리스트의 원소들까지 복사되지는 않으므로 주의
 print(c)      # 출력: [[5, 6], [7, 4]]
 print(d)      # 출력: [[1, 2], [7, 4]]
 print('%s, %s, %s' % (c is d, c[0] is d[0], c[1] is d[1])) # 출력: False, False, True
+
+'''
+File IO
+'''
+
+# f = open("hello.txt", "w")
+# try :
+#     f.write("text")
+# finally :
+# #     f.close()
+
+# class ManagedFile :
+#     def __init__(self , name) :
+#         self.name = name
+    
+#     def __enter__(self) :
+#         self.file = open(self.name, "w")
+#         return self.file
+    
+#     def __exit__(self , exc_type , exc_val , exc_tb) :
+#         if self.file :
+#             self.file.close()
+            
+# with ManagedFile("hello.txt") as f :
+#     f.write("test")
+#     f.write("test2")
