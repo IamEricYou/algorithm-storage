@@ -138,3 +138,87 @@ File IO
 # with ManagedFile("hello.txt") as f :
 #     f.write("test")
 #     f.write("test2")
+
+
+'''
+Useful Trick
+https://m.blog.naver.com/passion053/221058266968
+'''
+
+def fibonacci_generator():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+# 1000 보다 작은 피보나치 수열을 출력
+for i in fibonacci_generator():
+    if i > 1000:
+        break
+    print(i)
+
+    a = (x * x for x in range(100))
+
+# a 는 제너레이터 객체입니다. ( 역자 주: 아직 range(100) 은 실행되지 않은 상태 )
+print(type(a))
+
+# 제너레이터의 값을 모두 더합니다.
+print(sum(a))
+
+# 제너레이터에 값이 남아있지 않습니다.
+print(sum(a))
+
+from collections import Counter
+
+a = Counter('blue')
+b = Counter('yellow')
+
+print(a)
+print(b)
+print((a + b).most_common(3))
+
+a, *b, c = [2, 7, 5, 6, 3, 4, 1]
+print(a)
+print(b)
+print(c)
+
+def cache(function):
+    cached_values = {}  # 이미 계산된 값들만 저장합니다.
+    def wrapping_function(*args):
+        if args not in cached_values:
+            # 인자값중 아직 저장되지 않은 값들에 대해서만 함수를 실행합니다.
+            cached_values[args] = function(*args)
+        return cached_values[args]
+    return wrapping_function
+
+@cache
+def fibonacci(n):
+    print('calling fibonacci(%d)' % n)
+    if n < 2:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print([fibonacci(n) for n in range(1, 9)])
+
+from time import time
+
+
+class Timer():
+    def __init__(self, message):
+        self.message = message
+
+    def __enter__(self):
+        self.start = time()
+        return None  # could return anything, to be used like this: with Timer("Message") as value:
+
+    def __exit__(self, type, value, traceback):
+        elapsed_time = (time() - self.start) * 1000
+        print(self.message.format(elapsed_time))
+
+
+with Timer("Elapsed time to compute some prime numbers: {}ms"):
+    primes = []
+    for x in range(2, 500):
+        if not any(x % p == 0 for p in primes):
+            primes.append(x)
+    print("Primes: {}".format(primes))
