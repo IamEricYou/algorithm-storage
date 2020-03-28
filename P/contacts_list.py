@@ -21,9 +21,24 @@ def other_solution(phoneBook):
             return False
     return True
 
-set_first = ["12345", "12", "456", "7890"]
-set_second = ["123", "456", "789"]
-set_third = [ "234", "12345"]
-print(solution(set_first))
-print(solution(set_second))
-print(solution(set_third))
+#https://programmers.co.kr/learn/courses/30/lessons/42588
+def tower(height):
+    answer = []
+    reverse = height[::-1]
+    for x in range(len(reverse)-1):
+        if(reverse[x] < reverse[x+1]):
+            answer.append()
+    return answer
+
+
+# set_first = ["12345", "12", "456", "7890"]
+# set_second = ["123", "456", "789"]
+# set_third = [ "234", "12345"]
+# print(solution(set_first))
+# print(solution(set_second))
+# print(solution(set_third))
+
+heights = [6,9,5,7,4]
+print(tower[heights]) #returns [0,0,2,2,4]
+heights = [3,9,9,3,5,7,2]
+print(tower[heights]) #returns [0,0,0.3,3,3,6]
