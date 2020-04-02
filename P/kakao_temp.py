@@ -55,7 +55,7 @@ def s_solution(n, b):
 
    # print(count)
 
-s_solution(n1, b1)
+# s_solution(n1, b1)
 
 def f_solution(stones, k):
     answer = 0
@@ -93,13 +93,14 @@ def boardSolution(board, moves):
                 break
     
     count = 0
-    print(temp_list)
+    #print(temp_list)
     for i in range(len(temp_list)):
         if(result_list[-1] == temp_list[i]):
             del(result_list[-1])
             count += 1
             continue
         result_list.append(temp_list[i])
-    return count
+    answer = count * 2
+    return answer
 
-# print(boardSolution(board, moves))
+#print(boardSolution(board, moves))
