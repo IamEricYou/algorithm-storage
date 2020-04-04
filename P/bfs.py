@@ -28,24 +28,35 @@ def dfs(graph, start_node):
             stack.extend(graph[node])
 
     return visit
-
+    
+# https://programmers.co.kr/learn/courses/30/lessons/43163
+def first_solution(begin, target, words):
+    i =8
 
 if __name__ == "__main__":
-    graph = {
-        'A': ['B'],
-        'B': ['A', 'C', 'H'],
-        'C': ['B', 'D'],
-        'D': ['C', 'E', 'G'],
-        'E': ['D', 'F'],
-        'F': ['E'],
-        'G': ['D'],
-        'H': ['B', 'I', 'J', 'M'],
-        'I': ['H'],
-        'J': ['H', 'K'],
-        'K': ['J', 'L'],
-        'L': ['K'],
-        'M': ['H']
-    }
+    # graph = {
+    #     'A': ['B'],
+    #     'B': ['A', 'C', 'H'],
+    #     'C': ['B', 'D'],
+    #     'D': ['C', 'E', 'G'],
+    #     'E': ['D', 'F'],
+    #     'F': ['E'],
+    #     'G': ['D'],
+    #     'H': ['B', 'I', 'J', 'M'],
+    #     'I': ['H'],
+    #     'J': ['H', 'K'],
+    #     'K': ['J', 'L'],
+    #     'L': ['K'],
+    #     'M': ['H']
+    # }
 
-    print(bfs(graph, 'A'))
-    print(dfs(graph, 'A'))
+    # print(bfs(graph, 'A'))
+    # print(dfs(graph, 'A'))
+
+    #first solution
+
+    begin = "hit"
+    target = "cog"
+    words = ["hot", "dot", "dog", "lot", "log", "cog"] #should return 4
+
+    first_solution(begin, target, words) 
