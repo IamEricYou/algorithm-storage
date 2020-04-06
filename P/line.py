@@ -35,10 +35,20 @@ def first_solution(inputString):
 
     return count
 
+value = "if (Count of eggs is 4.) {Buy milk.}"
+value = "({)}"
+
+# print(first_solution(value))
+
 def second_solution(road, n):
     ones = list(filter(None, road.split("0")))
     zeros = list(filter(None, road.split("1")))
     print(ones, zeros)
+
+
+road = "111011110011111011111100011111"
+n = 3 #should return 18
+second_solution(road, n)
 
 
 def third_solution(dataSource, tags):
@@ -79,17 +89,6 @@ def fourth_solution(directory, command):
         print("2", directory)
     print(sorted(directory))
     return answer
-
-
-
-# value = "if (Count of eggs is 4.) {Buy milk.}"
-# # value = "({)}"
-
-# # print(first_solution(value))
-
-# road = "111011110011111011111100011111"
-# n = 3 #should return 18
-# second_solution(road, n)
 
 # dataSource = [
 #     ["doc1", "t1", "t2", "t3"],
@@ -150,5 +149,5 @@ result = [
 "/b/c"
 ]
 
-fourth_solution(directory, command)
+# fourth_solution(directory, command)
 
