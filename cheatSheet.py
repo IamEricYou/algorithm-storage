@@ -89,7 +89,7 @@ li = iter([1,2,3])
 print(next(li)) #1
 print(next(li)) #2
 print(next(li)) #3
-print(next(li)) #StopIteration
+# print(next(li)) #StopIteration
 
 '''
 List operation
@@ -222,3 +222,5 @@ with Timer("Elapsed time to compute some prime numbers: {}ms"):
         if not any(x % p == 0 for p in primes):
             primes.append(x)
     print("Primes: {}".format(primes))
+
+print(any(a % 2==0 for a in range(0,10,2))) #return true
