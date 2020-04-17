@@ -17,7 +17,7 @@ CREATE TABLE [table] (
     -- NOT IMPORTANT
     temp4 SMALLINT(10),
     -- 10 means width of the column
-    temp5 INT(10),
+    temp5 INT(10) NOT NULL AUTO_INCREMENT UNIQUE,
     -- BIG BIG INT
     temp6 BIGINT(10),
     temp7 FLOAT(10),
@@ -48,5 +48,35 @@ CREATE TABLE [table] (
     temp18 TIMESTAMP(10),
     temp19 YEAR(2)
 )ENGINE=InnoDB;
+```
+
+> Constraints Reference from [Here](https://www.w3schools.com/sql/sql_constraints.asp)
+
+```sql
+CREATE TABLE table_name (
+    column1 datatype constraint,
+    column2 datatype constraint,
+    column3 datatype constraint,
+    ....
+);
+
+NOT NULL -- Ensures that a column cannot have a NULL value
+UNIQUE -- Ensures that all values in a column are different
+PRIMARY KEY -- A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY -- Uniquely identifies a row/record in another table
+CHECK -- Ensures that all values in a column satisfies a specific condition
+DEFAULT -- Sets a default value for a column when no value is specified
+INDEX -- Used to create and retrieve data from the database very quickly
+```
+
+> ALTER & CHANGE 
+
+```sql
+-- ADD
+ALTER TABLE [table_name] ADD [column_name] [datatype];
+-- DROP
+ALTER TABLE [table_name] DROP COLUMN [column_name];
+-- MODIFY
+ALTER TABLE [table_name] MODIFY COLUMN [column_name] [datatype];\
 ```
 
