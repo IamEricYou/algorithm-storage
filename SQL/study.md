@@ -81,4 +81,4 @@ ALTER TABLE [table_name] MODIFY COLUMN [column_name] [datatype];\
 ```
 
 Iamge is from [Here](https://www.jrebel.com/blog)
-![](q1.jpg)
+![](SQL/q1.JPG)
