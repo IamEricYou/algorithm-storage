@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def solution(p, s):
     answer = 13
     for i in range(0, len(p)):
@@ -44,6 +45,7 @@ def solution_two(office, r, c, move):
                 if(c < 0):
                     c = 0
                     continue
+
             if office[r][c] == -1:
                 r, c = save_r, save_c
                 continue
@@ -65,14 +67,20 @@ def solution_two(office, r, c, move):
 
 from itertools import combinations
 
+#THIS PROBLEM HAS TO BE SOLVED LATER! (NOT FINISHED)
 def solution_three(numbers, K):
     answer = 0
     start = 0
     temp_idx = 0
     temp_arr = numbers.copy()
+    find_impossible = min(combinations(temp_arr, 2), key = lambda val: abs(val[0]-val[1]))
+    
+    #To see if there's an impossible list to process
+    if(int(abs(find_impossible[0] - find_impossible[1])) > K):
+        return -1
 
-    print(min(combinations(temp_arr, 2), key = lambda val: abs(val[0]-val[1]))) #Print min pairs
-    while answer < 5:
+    print(min(combinations(temp_arr, 2), key = lambda val: abs(val[0]-val[1])))
+    while answer < 2:
         
         temp_diff = []
         print(temp_arr)
@@ -85,7 +93,6 @@ def solution_three(numbers, K):
         temp_arr[max_idx] = temp_arr[min_idx]
         temp_arr[min_idx] = temp_swap
         print(temp_diff)
-        print(temp_arr)
         answer += 1
 
     return answer
