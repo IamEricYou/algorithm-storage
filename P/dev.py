@@ -70,19 +70,8 @@ def solution_three(numbers, K):
     start = 0
     temp_idx = 0
     temp_arr = numbers.copy()
-    # find_impossible = min(combinations(temp_arr, 2), key = lambda val: abs(val[0]-val[1]))
-    # if(int(abs(find_impossible[0] - find_impossible[1])) > K):
-    #     return -1
-    print(min(combinations(temp_arr, 2), key = lambda val: abs(val[0]-val[1])))
-    # while True:
-    #     find_pair = min(combinations(temp_arr, 2), key = lambda val: abs(val[0]-val[1]))
-    #     difference = int(abs(find_pair[0] - find_pair[1]))
-    #     if answer == 1:
-    #         break
-    #     swap_val_first, swap_val_second = int(find_pair[0]), int(find_pair[1])
-    #     temp_val, temp_idx = temp_arr[temp_arr.index(swap_val_first)], temp_arr.index(swap_val_second)
-    #     temp_arr[temp_arr.index(swap_val_first)], temp_arr[temp_idx] = swap_val_second, temp_val
-    #     answer += 1
+
+    print(min(combinations(temp_arr, 2), key = lambda val: abs(val[0]-val[1]))) #Print min pairs
     while answer < 5:
         
         temp_diff = []
