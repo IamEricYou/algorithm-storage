@@ -17,11 +17,16 @@ class Solution:
 
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         print(l1.__str__)
-
+        
+    def findDuplicate(self, nums: List[int]) -> int:
+        temp_list = list(set(nums))
+        return [x for x in nums if x not in temp_list or temp_list.remove(x)][0]
 
 if __name__ == "__main__":
     temp = Solution()
-    list_one = ListNode(val=2, next=ListNode(val=4, next= ListNode(val=3, next=None)))
-    list_two = ListNode(val=5, next=ListNode(val=6, next= ListNode(val=4, next=None)))
+    # list_one = ListNode(val=2, next=ListNode(val=4, next= ListNode(val=3, next=None)))
+    # list_two = ListNode(val=5, next=ListNode(val=6, next= ListNode(val=4, next=None)))
 
-    temp.addTwoNumbers(ListNode, list_two)
+    # temp.addTwoNumbers(ListNode, list_two)
+
+    print(temp.findDuplicate([1,3,4,2,2]))

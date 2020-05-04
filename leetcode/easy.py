@@ -69,6 +69,11 @@ class Solution:
             answer = answer / 2
 
         return True
+    
+    def singleNumber(self, nums: List[int]) -> int:
+        temp_list = list(set(nums))
+        list_has_duplicates =  [x for x in nums if x not in temp_list or temp_list.remove(x)]
+        return list(set(nums) - set(list_has_duplicates))
 
 if __name__ == "__main__":
     two = Solution()
@@ -84,4 +89,6 @@ if __name__ == "__main__":
 
     # print(two.hammingWeight(11))
     
-    print(two.isPowerOfTwo(10))
+    # print(two.isPowerOfTwo(10))
+
+    print(two.singleNumber([4,4,2,2,1]))
