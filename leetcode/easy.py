@@ -19,8 +19,38 @@ class Solution:
             if target - num in lookup:
                 return lookup[target-num], cnt
             lookup[num] = cnt
+    
+    # Reverse Integer 
+    def reverse(self, x: int) -> int:
+        temp_val = str(x)
+        # print(''.join(reversed(temp_val))) #method 1
+        if temp_val[0] == '-':
+            answer = int(self.delete_front_zeros('-' + temp_val[:0:-1]))
+        else:
+            answer = int(self.delete_front_zeros(temp_val[::-1]))
+        
+        if answer > 2**31 - 1 or answer < -2**31 - 1:
+            return 0
+        
+        return answer
+    
+    def delete_front_zeros(self, x: str) -> str:
+        temp_val = list(x)
+        count = 0
+        for item in x:
+            if item == '0' and len(x) == 1:
+                return ''.join(temp_val)
+
+            if item != '0':
+                return ''.join(temp_val)
+
+            temp_val.pop(0)
+
 
 if __name__ == "__main__":
     two = Solution()
-    print(two.twoSum([1,2,2,7,3,3], 6))
-    print(two.twoSumByListMethod([1,2,2,7,3,3], 6))
+    # print(two.twoSum([1,2,2,7,3,3], 6))
+    # print(two.twoSumByListMethod([1,2,2,7,3,3], 6))
+    print(two.reverse(342))
+    print(two.reverse(-120))
+    print(two.reverse(0))
