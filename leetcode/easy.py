@@ -45,12 +45,43 @@ class Solution:
                 return ''.join(temp_val)
 
             temp_val.pop(0)
+    
+    def reverseBits(self, n: int) -> int:
+        temp_val = str(bin(n)[2:].zfill(32))
+        swap_val = temp_val[::-1]
+        # '{:032}'.format(int(swap_val))
+        return int(swap_val, 2)
+        
+    # Number of 1 Bits
+    def hammingWeight(self, n: int) -> int:
+        return str(bin(n)[2:].zfill(32)).count('1')
 
+    # Power of Two
+    def isPowerOfTwo(self, n: int) -> bool:
+        answer = n
+        while True:
+            if answer == 0:
+                return False
+            
+            if answer == 1:
+                return True
+
+            answer = answer / 2
+
+        return True
 
 if __name__ == "__main__":
     two = Solution()
+    
     # print(two.twoSum([1,2,2,7,3,3], 6))
     # print(two.twoSumByListMethod([1,2,2,7,3,3], 6))
-    print(two.reverse(342))
-    print(two.reverse(-120))
-    print(two.reverse(0))
+    
+    # print(two.reverse(342))
+    # print(two.reverse(-120))
+    # print(two.reverse(0))
+
+    # print(two.reverseBits(43261596))
+
+    # print(two.hammingWeight(11))
+    
+    print(two.isPowerOfTwo(10))
