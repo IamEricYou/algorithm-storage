@@ -75,6 +75,18 @@ class Solution:
         list_has_duplicates =  [x for x in nums if x not in temp_list or temp_list.remove(x)]
         return list(set(nums) - set(list_has_duplicates))
 
+    def isPalindrome(self, x: int) -> bool:
+        if (x < 0):
+            return False
+        
+        str_number = str(x)
+        comp_number = str_number[::-1]
+        
+        if comp_number != str_number:
+            return False
+
+        return True
+
 if __name__ == "__main__":
     two = Solution()
     
@@ -91,4 +103,6 @@ if __name__ == "__main__":
     
     # print(two.isPowerOfTwo(10))
 
-    print(two.singleNumber([4,4,2,2,1]))
+    # print(two.singleNumber([4,4,2,2,1]))
+
+    print(two.isPalindrome(11))
