@@ -69,6 +69,16 @@ class Solution:
                 return 0
 
         return 0
+    
+
+    def generateParenthesis(self, n: int) -> List[str]:
+        complete_paran = ['(', ')']
+        temp = []
+        for i in range(n):
+            temp.append(complete_paran*i)
+        return temp
+
+
 
 if __name__ == "__main__":
     temp = Solution()
@@ -79,4 +89,6 @@ if __name__ == "__main__":
 
     # print(temp.findDuplicate([1,3,4,2,2]))
 
-    print(temp.myAtoi("+1"))
+    # print(temp.myAtoi("+1"))
+
+    print(temp.generateParenthesis(3))

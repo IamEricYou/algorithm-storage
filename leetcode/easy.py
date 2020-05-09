@@ -87,6 +87,46 @@ class Solution:
 
         return True
 
+    def isValid(self, s: str) -> bool:
+        open_bracket = ["(", "{", "<", "["]
+        closed_bracket = [")", "}", ">", "]"]
+        temp = [x for x in s]
+        checker = []
+
+        # while True:
+        #     if not temp:
+        #         return True
+            
+        #     x = temp.pop(0)
+
+        #     if x in open_bracket:
+        #         where = open_bracket.index(x)
+        #         if closed_bracket[where] not in temp:
+        #             return False
+        #         else:
+        #             temp.remove(closed_bracket[where])
+        #     else:
+        #         return False
+
+        for item in temp:
+            if item in open_bracket:
+                checker.append(item)
+            else:
+                if not checker:
+                    return False
+                    
+                where = closed_bracket.index(item)
+                print(checker)
+                if checker[-1] == open_bracket[where]:
+                    del checker[-1]
+                else:
+                    return False
+        
+        if checker:
+            return False
+
+        return True
+
 if __name__ == "__main__":
     two = Solution()
     
@@ -105,4 +145,6 @@ if __name__ == "__main__":
 
     # print(two.singleNumber([4,4,2,2,1]))
 
-    print(two.isPalindrome(11))
+    # print(two.isPalindrome(11))
+
+    print(two.isValid("]"))
