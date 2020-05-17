@@ -74,6 +74,22 @@ class Solution:
         temp_list = list(set(nums))
         list_has_duplicates =  [x for x in nums if x not in temp_list or temp_list.remove(x)]
         return list(set(nums) - set(list_has_duplicates))
+    
+    def defangIPaddr(self, address: str) -> str:
+        return address.replace('.', "[.]")
+
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        answer = []
+        for i in candies:
+            answer.append(i + extraCandies >= max(candies) )
+        return answer
+    
+    def isMonotonic(self, A: List[int]) -> bool:
+        checker = 0 # increasing 0, if not 1
+        temp = A[0]
+        for i in range(1,len(A)):
+            if(temp >= A[i]):
+        return 4
 
 if __name__ == "__main__":
     two = Solution()
@@ -91,4 +107,10 @@ if __name__ == "__main__":
     
     # print(two.isPowerOfTwo(10))
 
-    print(two.singleNumber([4,4,2,2,1]))
+    # print(two.singleNumber([4,4,2,2,1]))
+
+    # print(two.defangIPaddr("1.1.1.1"))
+
+    # print(two.kidsWithCandies([2,3,5,1,3], 3))
+
+    print(two.isMonotonic([1,2,2,3]))
