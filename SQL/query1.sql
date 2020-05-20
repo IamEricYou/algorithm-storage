@@ -14,3 +14,13 @@ SELECT count(*) FROM flanb_point_of_interest WHERE status='JHR' and flan is NULL
 SELECT position, metaFROM flanb_point_of_interest WHERE status='JHR' LIMIT 50;
 SELECT * FROM flanb_point_of_interest WHERE status='JHR' LIMIT 50;
 SELECT payment_method, COUNT(*) FROM flanb_point_of_interest WHERE status='JHR' GROUP BY payment_method HAVING count(*) > 1;
+
+-- Query with times
+
+SELECT count(*) FROM flanb_point_of_interest WHERE status='JHR';
+SELECT meta FROM flanb_point_of_interest WHERE status='JHR' LIMIT 10;
+SELECT * FROM flanb_point_of_interest WHERE status='JHR' and create_dt > '2020-5-20 14:00:00' LIMIT 50;
+
+-- Query to see if a word mathces a certain word in a column
+
+SELECT count(*) FROM flanb_point_of_interest WHERE status='JHR' and vendor_link like '%kaohsiung%';
