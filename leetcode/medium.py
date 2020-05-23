@@ -22,6 +22,16 @@ class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         temp_list = list(set(nums))
         return [x for x in nums if x not in temp_list or temp_list.remove(x)][0]
+        
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        str_to_set = set([x for x in s])
+        return len(str_to_set)
+
+    def numJewelsInStones(self, J: str, S: str) -> int:
+        count = 0
+        for char in J:
+            count += S.count(char)
+        return count
 
     def myAtoi(self, str: str) -> int:
         import re
@@ -81,6 +91,7 @@ class Solution:
 
 
 if __name__ == "__main__":
+
     temp = Solution()
     # list_one = ListNode(val=2, next=ListNode(val=4, next= ListNode(val=3, next=None)))
     # list_two = ListNode(val=5, next=ListNode(val=6, next= ListNode(val=4, next=None)))
@@ -89,6 +100,6 @@ if __name__ == "__main__":
 
     # print(temp.findDuplicate([1,3,4,2,2]))
 
-    # print(temp.myAtoi("+1"))
+    # print(temp.lengthOfLongestSubstring("pwwkew"))
 
-    print(temp.generateParenthesis(3))
+    print(temp.numJewelsInStones("z", "ZZ"))
