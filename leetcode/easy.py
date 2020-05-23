@@ -161,3 +161,4 @@ if __name__ == "__main__":
     # print(two.isPowerOfTwo(10))
 
     # print(two.singleNumber([4,4,2,2,1]))
+    print("hi")
