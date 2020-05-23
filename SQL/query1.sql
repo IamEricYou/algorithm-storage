@@ -24,3 +24,4 @@ SELECT * FROM flanb_point_of_interest WHERE status='JHR' and create_dt > '2020-5
 -- Query to see if a word mathces a certain word in a column
 
 SELECT count(*) FROM flanb_point_of_interest WHERE status='JHR' and vendor_link like '%kaohsiung%';
+

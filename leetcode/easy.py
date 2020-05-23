@@ -89,6 +89,7 @@ class Solution:
         temp = A[0]
         for i in range(1,len(A)):
             if(temp >= A[i]):
+                pass
         return 4
 
     def isPalindrome(self, x: int) -> bool:
