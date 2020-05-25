@@ -13,7 +13,8 @@ class ListNode:
 
 class Solution:
     def __init__(self):
-        print("This class is called")
+        # print("This class is called")
+        pass
 
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         print(l1.__str__)
@@ -31,6 +32,63 @@ class Solution:
         for char in J:
             count += S.count(char)
         return count
+
+    def myAtoi(self, str: str) -> int:
+        import re
+        string_value = str.lstrip().split(" ")[0]
+        parsed_value = re.findall('\d+|\D+', string_value)
+        
+        if not parsed_value:
+            return 0
+
+        if parsed_value[0] == '-' and len(parsed_value) > 1:
+            try :
+                num = int('-' + parsed_value[1])
+                if num < -2147483648:
+                    return -2147483648
+
+                if num > 2147483647:
+                    return 2147483647
+                
+                return num
+            except ValueError:
+                return 0
+        elif parsed_value[0] == '+' and len(parsed_value) > 1:
+            try :
+                num = int(parsed_value[1])
+                if num < -2147483648:
+                    return -2147483648
+
+                if num > 2147483647:
+                    return 2147483647
+                
+                return num
+            except ValueError:
+                return 0
+        else:
+            try :
+                num = int(parsed_value[0])
+                if num < -2147483648:
+                    return -2147483648
+
+                if num > 2147483647:
+                    return 2147483647
+
+                return num
+            except ValueError:
+                return 0
+
+        return 0
+    
+
+    def generateParenthesis(self, n: int) -> List[str]:
+        complete_paran = ['(', ')']
+        temp = []
+        for i in range(n):
+            temp.append(complete_paran*i)
+        return temp
+
+
 
 if __name__ == "__main__":
 

@@ -89,7 +89,60 @@ class Solution:
         temp = A[0]
         for i in range(1,len(A)):
             if(temp >= A[i]):
+                pass
         return 4
+
+    def isPalindrome(self, x: int) -> bool:
+        if (x < 0):
+            return False
+        
+        str_number = str(x)
+        comp_number = str_number[::-1]
+        
+        if comp_number != str_number:
+            return False
+
+        return True
+
+    def isValid(self, s: str) -> bool:
+        open_bracket = ["(", "{", "<", "["]
+        closed_bracket = [")", "}", ">", "]"]
+        temp = [x for x in s]
+        checker = []
+
+        # while True:
+        #     if not temp:
+        #         return True
+            
+        #     x = temp.pop(0)
+
+        #     if x in open_bracket:
+        #         where = open_bracket.index(x)
+        #         if closed_bracket[where] not in temp:
+        #             return False
+        #         else:
+        #             temp.remove(closed_bracket[where])
+        #     else:
+        #         return False
+
+        for item in temp:
+            if item in open_bracket:
+                checker.append(item)
+            else:
+                if not checker:
+                    return False
+                    
+                where = closed_bracket.index(item)
+                print(checker)
+                if checker[-1] == open_bracket[where]:
+                    del checker[-1]
+                else:
+                    return False
+        
+        if checker:
+            return False
+
+        return True
 
 if __name__ == "__main__":
     two = Solution()
@@ -108,9 +161,4 @@ if __name__ == "__main__":
     # print(two.isPowerOfTwo(10))
 
     # print(two.singleNumber([4,4,2,2,1]))
-
-    # print(two.defangIPaddr("1.1.1.1"))
-
-    # print(two.kidsWithCandies([2,3,5,1,3], 3))
-
-    print(two.isMonotonic([1,2,2,3]))
+    print("hi")
