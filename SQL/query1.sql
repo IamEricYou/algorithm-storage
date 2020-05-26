@@ -29,3 +29,6 @@ SELECT count(*) FROM flanb_point_of_interest WHERE status='JHR' and vendor_link 
 select count(*) from flanb_point_of_interest where (vendor_link = '') IS FALSE;
 select count(*) from flanb_point_of_interest where (vendor_link = '') IS TRUE;
 
+-- Search item in json
+
+select * from flanb_point_of_interest fpoi where meta->'meta' is null and status in ('YNC', 'YNC2', 'JHR');
