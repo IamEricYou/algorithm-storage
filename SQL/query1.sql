@@ -32,3 +32,11 @@ select count(*) from flanb_point_of_interest where (vendor_link = '') IS TRUE;
 -- Search item in json
 
 select * from flanb_point_of_interest fpoi where meta->'meta' is null and status in ('YNC', 'YNC2', 'JHR');
+
+-- update query
+
+update flanb_point_of_interest set city_id=183694 where vendor_link like 'https://tw.openrice.com/en/kaohsiung-pingtung/%';
+
+-- left join
+
+select fpoi.vendor_link, flanb_poi.code from flanb_point_of_interest fpoi left join flanb_poi on fpoi.city_id = flanb_poi.id where (fpoi.vendor_link = '') is FALSE
