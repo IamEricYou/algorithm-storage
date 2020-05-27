@@ -224,3 +224,31 @@ with Timer("Elapsed time to compute some prime numbers: {}ms"):
     # print("Primes: {}".format(primes))
 
 # print(any(a % 2==0 for a in range(0,10,2))) #return true
+
+
+'''
+read / work with excel
+'''
+import pandas as pd
+import numpy as np
+
+restaurant_file = pd.read_excel('flanb_data/file.xlsx', sheet_name='05.음식점(작업중)')
+
+vendor_id_list = list(restaurant_file['vendor'])
+vendor_uid_list = list(restaurant_file['vendor_uid'])
+
+tag_start_count = 0
+tag_finish_count = 0
+
+for num in range(len(restaurant_file.columns)):
+    if restaurant_file.columns[num].startswith('tag'):
+        tag_start_count = num
+
+    if restaurant_file.columns[num].startswith('openrice'):
+        tag_finish_count = num
+        break
+
+temp_list = []
+for i in range(tag_start_count, tag_finish_count):
+    parsed_list = list(restaurant_file[restaurant_file.columns[i]].replace(np.nan, 'empty', regex=True))
+    temp_list.append(parsed_list)
