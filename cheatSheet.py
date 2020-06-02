@@ -229,26 +229,34 @@ with Timer("Elapsed time to compute some prime numbers: {}ms"):
 '''
 read / work with excel
 '''
-import pandas as pd
-import numpy as np
+# import pandas as pd
+# import numpy as np
 
-restaurant_file = pd.read_excel('flanb_data/file.xlsx', sheet_name='05.음식점(작업중)')
+# restaurant_file = pd.read_excel('flanb_data/file.xlsx', sheet_name='05.음식점(작업중)')
 
-vendor_id_list = list(restaurant_file['vendor'])
-vendor_uid_list = list(restaurant_file['vendor_uid'])
+# vendor_id_list = list(restaurant_file['vendor'])
+# vendor_uid_list = list(restaurant_file['vendor_uid'])
 
-tag_start_count = 0
-tag_finish_count = 0
+# tag_start_count = 0
+# tag_finish_count = 0
 
-for num in range(len(restaurant_file.columns)):
-    if restaurant_file.columns[num].startswith('tag'):
-        tag_start_count = num
+# for num in range(len(restaurant_file.columns)):
+#     if restaurant_file.columns[num].startswith('tag'):
+#         tag_start_count = num
 
-    if restaurant_file.columns[num].startswith('openrice'):
-        tag_finish_count = num
-        break
+#     if restaurant_file.columns[num].startswith('openrice'):
+#         tag_finish_count = num
+#         break
 
-temp_list = []
-for i in range(tag_start_count, tag_finish_count):
-    parsed_list = list(restaurant_file[restaurant_file.columns[i]].replace(np.nan, 'empty', regex=True))
-    temp_list.append(parsed_list)
+# temp_list = []
+# for i in range(tag_start_count, tag_finish_count):
+#     parsed_list = list(restaurant_file[restaurant_file.columns[i]].replace(np.nan, 'empty', regex=True))
+#     temp_list.append(parsed_list)
+
+# about enumerate
+a = ['1','2','3','4','5']
+for i, item in enumerate(a):
+    print(i, item) # will print 0, '1'
+
+some_str = "{} - {} is {}".format(1,2,3) # this will put numbers in format method. you can parse some string in that format method
+
