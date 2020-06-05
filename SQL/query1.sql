@@ -40,3 +40,6 @@ update flanb_point_of_interest set city_id=183694 where vendor_link like 'https:
 -- left join
 
 select fpoi.vendor_link, flanb_poi.code from flanb_point_of_interest fpoi left join flanb_poi on fpoi.city_id = flanb_poi.id where (fpoi.vendor_link = '') is FALSE
+select count(*) from flanb_point_of_interest fpoi where category='RTR' and meta ->> 'categories' is not null;
+
+
