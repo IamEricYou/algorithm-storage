@@ -27,4 +27,4 @@ if __name__ == '__main__':
         return_list.append(x)
     
     parsed = list(set(return_list))
-    print(parsed)
+    print(len(parsed))
