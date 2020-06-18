@@ -13,7 +13,19 @@ def replace_image_url(old_url):
 
     return parsed_url
 
-with open('pick_temp.json') as f:
+file_list = [
+    'exchange_temp.json',
+    'meet_temp.json',
+    'pick_temp.json',
+    'prod_temp.json',
+    'prod_temp1.json',
+    'tour_temp.json',
+    'exchange_temp.json',
+    'prod_temp2.json',
+    'expr_temp.json'
+]
+
+with open(file_list[2]) as f:
     data = json.load(f)
 
 # data_prod_desc = data.get('prod').get('description_module')
@@ -54,21 +66,27 @@ for s in schedule['schedule_list']['list']:
             'day': count_day,
             'seq': seq,
             'desc': each_day.get('content').get('desc'),
-            'image_url': tour_image_url if tour_image_url else "",
+            'image_url': replace_image_url(tour_image_url) if tour_image_url else "",
         }
         tour_list.append(tour_template)
 
-prod_desc_res
+meeting_location_lang = [
+    '집합 장소', 'Meeting Point', '集合地點', '集合地點'
+]
+
+pickup_location_lang = [
+    '픽업 장소', 'Pick-Up Point', '接駁地點', '接駁地點'
+]
 pick_meeting_location = prod_desc_res.get('PMDL_VENUE_LOCATION')
 meeting_lo_list = []
-pickup_lo_list = []
+# pickup_lo_list = []
 
 if pick_meeting_location:
     location_type = "undefined"
-    if pick_meeting_location.get('module_title') == '집합 장소':
+    if pick_meeting_location.get('module_title') in meeting_location_lang:
         location_type = "meeting"
 
-    if pick_meeting_location.get('module_title') == '픽업 장소':
+    if pick_meeting_location.get('module_title') in pickup_location_lang:
         location_type = "pick-up"
 
     for each_lo in pick_meeting_location.get('content').get('list'):
@@ -104,17 +122,17 @@ if exchange_location:
         }
         exchange_lo_list.append(exchange_template)
 
-
+experience_location = prod_desc_res.get('PMDL_EXPERIENCE_LOCATION')
 exp_lo_list = []
 if experience_location:
     for each_exp_lo in experience_location.get('content').get('list'):
         experience_lo_template = {
-            'latitude': float(each_exp_lo.get('latitude')),
-            'longitude': float(each_exp_lo.get('longitude')),
-            'image_url': replace_image_url(each_exp_lo.get('map_snap_url')),
-            'zoom': int(each_exp_lo.get('zoom_lv')),
-            'desc': each_exp_lo.get('desc'),
+            'latitude': float(each_exp_lo.get('latlng').get('latitude')),
+            'longitude': float(each_exp_lo.get('latlng').get('longitude')),
+            'image_url': replace_image_url(each_exp_lo.get('latlng').get('map_snap_url')),
+            'zoom': int(each_exp_lo.get('latlng').get('zoom_lv')),
+            'desc': each_exp_lo.get('latlng').get('desc'),
         }
         exp_lo_list.append(experience_lo_template)
 
-print(exchange_lo_list)
+print(meeting_lo_list)
