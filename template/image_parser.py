@@ -2,6 +2,8 @@ import os
 import json
 from pathlib import Path
 from PIL import Image
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def parse_ara_v2_image_extension_to_jpeg(iamge_file):
     parsed_file_name = iamge_file
@@ -17,21 +19,34 @@ def parse_ara_v2_image_extension_to_jpeg(iamge_file):
 def resize_images_in_dir(directory):
     # directory = '/workspace/algorithm-storage/template'
     
-    result = list(Path(".").rglob("*.[j][p][g]"))
+    result = list(Path("/storage/temp/temp_file").rglob("*.[j][p][e][g]"))
     # print(os.listdir(os.getcwd()))
     # print(result[1])
     # print(len(result))
     wrong_file_list = []
-    result = ['tokyo/city_currency_exchange_4.png']
+    size = 70, 70
     for each_jpg in result:
         print(each_jpg)
+        if '/mobile/' in str(each_jpg):
+            continue
         # try:
         img = Image.open(each_jpg)
+        width, height = img.size
+        if width > height:
+            ratio = width / height
+            size = (int(70 * ratio), 70)
+        else:
+            ratio = height /width
+            size = (70, int(70 * ratio))
+
         if img.mode in ("RGBA", "P"):
             img = img.convert("RGB")
-        
-        new_file_name = str(each_jpg).replace('.png', '.jpeg')
-        img.save(new_file_name, 'JPEG')
+
+        img.thumbnail(size, Image.ANTIALIAS)
+        parsed_file_name = str(each_jpg).split('/')
+        parsed_file_name.insert(len(parsed_file_name)-1, 'mobile')
+        parsed_file_name = '/'.join(parsed_file_name)
+        img.save(parsed_file_name, 'JPEG')
 
         # except:
         #     wrong_file_list.append(each_jpg)
