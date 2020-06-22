@@ -18,40 +18,46 @@ def parse_ara_v2_image_extension_to_jpeg(iamge_file):
 
 def resize_images_in_dir(directory):
     # directory = '/workspace/algorithm-storage/template'
-    
-    result = list(Path("/storage/temp/temp_file").rglob("*.[j][p][e][g]"))
+    # /storage/temp/temp_file/geongju/mobile/city_attractions_1-1
+    result = list(Path("/storage/temp/main_temp/").rglob('*.[j][p][e][g]'))
     # print(os.listdir(os.getcwd()))
     # print(result[1])
     # print(len(result))
-    wrong_file_list = []
+    success_list = []
     size = 70, 70
+    BASE_SIZE = 200
+    ABSOLUTE_SIZE = 330, 330
     for each_jpg in result:
-        print(each_jpg)
+        if '1591113613' not in str(each_jpg):
+            continue
+
         if '/mobile/' in str(each_jpg):
             continue
         # try:
+
         img = Image.open(each_jpg)
         width, height = img.size
         if width > height:
             ratio = width / height
-            size = (int(70 * ratio), 70)
+            size = (int(BASE_SIZE * ratio), BASE_SIZE)
         else:
             ratio = height /width
-            size = (70, int(70 * ratio))
+            size = (BASE_SIZE, int(BASE_SIZE * ratio))
 
         if img.mode in ("RGBA", "P"):
             img = img.convert("RGB")
 
-        img.thumbnail(size, Image.ANTIALIAS)
+        img.thumbnail(ABSOLUTE_SIZE, Image.ANTIALIAS)
+        success_list.append(each_jpg)
         parsed_file_name = str(each_jpg).split('/')
         parsed_file_name.insert(len(parsed_file_name)-1, 'mobile')
         parsed_file_name = '/'.join(parsed_file_name)
         img.save(parsed_file_name, 'JPEG')
-
+        print(success_list)
         # except:
         #     wrong_file_list.append(each_jpg)
 
-    print(wrong_file_list)
+    # print(wrong_file_list)
     return
 
 def myprint(d):

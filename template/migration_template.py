@@ -25,7 +25,7 @@ file_list = [
     'expr_temp.json'
 ]
 
-with open(file_list[2]) as f:
+with open('jsons/meeting_temp.json') as f:
     data = json.load(f)
 
 # data_prod_desc = data.get('prod').get('description_module')
@@ -78,9 +78,9 @@ pickup_location_lang = [
     '픽업 장소', 'Pick-Up Point', '接駁地點', '接駁地點'
 ]
 pick_meeting_location = prod_desc_res.get('PMDL_VENUE_LOCATION')
-meeting_lo_list = []
+meeting_pick_lo_list = []
 # pickup_lo_list = []
-
+check_position = 0
 if pick_meeting_location:
     location_type = "undefined"
     if pick_meeting_location.get('module_title') in meeting_location_lang:
@@ -89,18 +89,45 @@ if pick_meeting_location:
     if pick_meeting_location.get('module_title') in pickup_location_lang:
         location_type = "pick-up"
 
-    for each_lo in pick_meeting_location.get('content').get('list'):
+    for i, each_lo in enumerate(pick_meeting_location.get('content').get('list')):
+        if check_position == 0 and each_lo.get('latlng').get('longitude', 0.0) != 0.0:
+            #position = Point(float(each_lo.get('latlng').get('longitude', 0.0)), float(each_lo.get('latlng').get('latitude', 0.0)))
+            check_position = 1
+
+        note = []
+        if location_type == 'meeting':
+            if each_lo.get('arrival_desc'):
+                note.append(each_lo.get('arrival_desc').get('desc'))
+
+        if location_type == 'pick-up':
+            pickup_detail_list = prod_detail_res['booking_field'].get('traffic').get('car').get('location_list').get('list_option')
+
+            # Sometimes, the data is like 9:0, which needs to be parsed like 9:00
+            parsed_s_time = pickup_detail_list[i].get('s_time').split(':')
+            parsed_e_time = pickup_detail_list[i].get('e_time').split(':')
+
+            if len(parsed_s_time[1]) != 2:
+                parsed_s_time[1] += "0"
+
+            if len(parsed_e_time[1]) != 2:
+                parsed_e_time[1] += "0"
+
+            note.append(parsed_s_time)
+            note.append(parsed_e_time)
+
         meeting_pick_template = {
             "type": location_type,
-            "name": each_lo.get('location_name').get('desc'),
-            "latitude": float(each_lo.get('latlng').get('latitude')),
-            "longitude": float(each_lo.get('latlng').get('longitude')),
+            "name": each_lo.get('location_name').get('desc') if location_type == 'meeting' else each_lo.get('latlng').get('desc'),
+            "latitude": float(each_lo.get('latlng').get('latitude', 0.0)),
+            "longitude": float(each_lo.get('latlng').get('longitude', 0.0)),
             "place_id": each_lo.get('latlng').get('place_id'),
-            "address": each_lo.get('latlng').get('desc'),
-            "zoom": int(each_lo.get('latlng').get('zoom_lv')),
-            "images": replace_image_url(each_lo.get('latlng').get('map_snap_url'))
+            "address": each_lo.get('latlng').get('desc') if location_type == 'meeting' else each_lo.get('location_name').get('desc'),
+            "zoom": int(each_lo.get('latlng').get('zoom_lv', 0)),
+            "images": replace_image_url(each_lo.get('latlng').get('map_snap_url', "")),
+            "desc": note, # for pick-up, they have meeting time and depart time. The time will be saved as [meeting_time, depart_time]
+            # for meeting, they may have some transportation information.
         }
-        meeting_lo_list.append(meeting_pick_template)
+        meeting_pick_lo_list.append(meeting_pick_template)
 
 exchange_location = prod_desc_res.get('PMDL_EXCHANGE_LOCATION')
 exchange_lo_list = []
@@ -135,4 +162,4 @@ if experience_location:
         }
         exp_lo_list.append(experience_lo_template)
 
-print(meeting_lo_list)
+print(meeting_pick_lo_list)
