@@ -19,7 +19,7 @@ def parse_ara_v2_image_extension_to_jpeg(iamge_file):
 def resize_images_in_dir(directory):
     # directory = '/workspace/algorithm-storage/template'
     # /storage/temp/temp_file/geongju/mobile/city_attractions_1-1
-    result = list(Path("/storage/temp/main_temp/").rglob('*.[j][p][e][g]'))
+    result = list(Path("/storage/temp/temp_file/").rglob('*.[j][p][e][g]'))
     # print(os.listdir(os.getcwd()))
     # print(result[1])
     # print(len(result))
@@ -28,9 +28,6 @@ def resize_images_in_dir(directory):
     BASE_SIZE = 200
     ABSOLUTE_SIZE = 330, 330
     for each_jpg in result:
-        if '1591113613' not in str(each_jpg):
-            continue
-
         if '/mobile/' in str(each_jpg):
             continue
         # try:
@@ -47,13 +44,13 @@ def resize_images_in_dir(directory):
         if img.mode in ("RGBA", "P"):
             img = img.convert("RGB")
 
-        img.thumbnail(ABSOLUTE_SIZE, Image.ANTIALIAS)
+        img.thumbnail(size, Image.ANTIALIAS)
         success_list.append(each_jpg)
         parsed_file_name = str(each_jpg).split('/')
         parsed_file_name.insert(len(parsed_file_name)-1, 'mobile')
         parsed_file_name = '/'.join(parsed_file_name)
         img.save(parsed_file_name, 'JPEG')
-        print(success_list)
+        print(len(success_list))
         # except:
         #     wrong_file_list.append(each_jpg)
 

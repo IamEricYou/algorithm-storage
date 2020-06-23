@@ -138,7 +138,10 @@ def update_tags(file):
     print(tag_list)
 
 def get_columns(file):
-    print()
+    print(file.columns)
+    print(str(file.columns))
+    print(file.columns.tolist())
+    print(sum(x.startswith('item_') for x in file.columns.tolist()))
 
 if __name__ == "__main__":
     file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='추천일정_Template')
