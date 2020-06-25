@@ -16,21 +16,16 @@ def parse_ara_v2_image_extension_to_jpeg(iamge_file):
 
     return parsed_file_name
 
-def resize_images_in_dir(directory):
-    # directory = '/workspace/algorithm-storage/template'
-    # /storage/temp/temp_file/geongju/mobile/city_attractions_1-1
-    result = list(Path("/storage/temp/temp_file/").rglob('*.[j][p][e][g]'))
-    # print(os.listdir(os.getcwd()))
-    # print(result[1])
-    # print(len(result))
+def resize_images_in_dir():
+    LOCAL_PATH = "/storage/temp/temp_file/"
+    result = list(Path(LOCAL_PATH).rglob('*.[j][p][e][g]'))
     success_list = []
     size = 70, 70
     BASE_SIZE = 200
-    ABSOLUTE_SIZE = 330, 330
+    ABSOLUTE_SIZE = 330, 330 # Change image to square
     for each_jpg in result:
         if '/mobile/' in str(each_jpg):
             continue
-        # try:
 
         img = Image.open(each_jpg)
         width, height = img.size
@@ -51,11 +46,7 @@ def resize_images_in_dir(directory):
         parsed_file_name = '/'.join(parsed_file_name)
         img.save(parsed_file_name, 'JPEG')
         print(len(success_list))
-        # except:
-        #     wrong_file_list.append(each_jpg)
 
-    # print(wrong_file_list)
-    return
 
 def myprint(d):
     for k, v in d.items():
@@ -153,4 +144,4 @@ if __name__ == "__main__":
     #     data = json.load(f)
     # replace_image_extension_to_jpeg(data)
 
-    resize_images_in_dir('1')
+    resize_images_in_dir()

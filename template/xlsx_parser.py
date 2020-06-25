@@ -121,7 +121,6 @@ def validate_tags(tag_name):
     return True
 
 def update_tags(file):
-
     tag_list = []
     for item in file:
         if item.startswith('item_'):
@@ -131,21 +130,37 @@ def update_tags(file):
     
     # Some tags, which are same but have different space in the word, are manually removed
     tag_list = list(set(tag_list))
-    tag_list.remove('타이베이101 전망대')
-    tag_list.remove('타이베이101쇼핑몰')
     for tag in tag_list:
         print(''.join(x.lower() for x in tag if not x.isspace()))
     print(tag_list)
 
+# 하노키빌리지, 타이베이 101 전망대, 타이베이 101 쇼핑몰, 스무시하우스,  
 def get_columns(file):
     print(file.columns)
     print(str(file.columns))
     print(file.columns.tolist())
     print(sum(x.startswith('item_') for x in file.columns.tolist()))
 
+
+def get_kkday_tags(file):
+    file_list = file.values.tolist()
+    
+    for line in file_list:
+        del line[0]
+        del line[0]
+
+    print(file_list)
+    return 
+    for item in file_list:
+        item = item[2:]
+        print(item[1:])
+
+
 if __name__ == "__main__":
     file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='추천일정_Template')
     # get_rows()
-    get_columns(file)
+    # get_columns(file)
     # create_csv_with_tags()
     # update_tags(file)
+    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='01.기본분류')
+    get_kkday_tags(file)
