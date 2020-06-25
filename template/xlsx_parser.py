@@ -120,6 +120,7 @@ def validate_tags(tag_name):
 
     return True
 
+
 def update_tags(file):
     tag_list = []
     for item in file:
@@ -155,12 +156,84 @@ def get_kkday_tags(file):
         item = item[2:]
         print(item[1:])
 
+def get_tendency_list_index(f, li):
+    index_list = []
+    for item in li:
+        index_list.append(f.columns.get_loc(item))
+    
+    return index_list
+
+def parse_tendency_question(f):
+    q_code_index = f.columns.get_loc('question_code (질문 코드)')
+    img_url_index = f.columns.get_loc('choice_img_url (이미지 주소)')
+    choice_key_index = f.columns.get_loc('choice_key (선택지 키값)')
+
+    file = f.values.tolist()
+
+    tc = ['budget_01', 'travel_purpose_02']
+    ic = ['landscape_03', 'activity_04', 'food_05']
+    tendency_list = ['luxurious', 'lowbudget', 'active', 'static', 'city', 'nature ', 'foodtour', 'proactive', 'passive', 'food_tags']
+    tendency_list_index = get_tendency_list_index(f, tendency_list)
+
+    code_list = replace_nan_to_empty(f['question_code (질문 코드)'])
+    parsed_code_list = list(set(code_list))
+    parsed_code_list.remove('empty') if 'empty' in parsed_code_list else None
+
+    for each_code in parsed_code_list:
+        order_flag = 1
+        each_code_list = []
+        choices = []
+        for each_row in file:
+            # Get all rows by corresponding code
+            if each_row[q_code_index] == each_code:
+                each_code_list.append(each_row)
+        
+        for item in each_code_list:
+            if each_code in tc:
+                order_no = f.columns.get_loc('choice_order (선택지 순서)')
+                choice_template =  {
+                    "key": item[choice_key_index],
+                    "text": "Empty for now",
+                    "order": int(item[order_no]),
+                    "tendency_points": {
+                        "static": 10
+                    }
+                }
+                # print(choice_template)
+            else:
+                import math
+                tendency_points = {}
+                extra_tags = {}
+                for idx, each_idx in enumerate(tendency_list_index):
+                    if type(item[each_idx]) == float and np.isnan(item[each_idx]): # if this is nan value
+                        continue
+                    if tendency_list[idx] == 'food_tags':
+                        splitted_food_type = item[each_idx].split(',')
+                        for each_food_type in splitted_food_type:
+                            tendency_points.update({each_food_type:1})
+                        continue
+                    tendency_points.update({tendency_list[idx]: item[each_idx]}) 
+
+                choice_template = {
+                    'key': item[choice_key_index],
+                    'img_url': item[img_url_index],
+                    'order': order_flag,
+                    'tendency_points': tendency_points
+                }
+                order_flag += 1
+                choices.append(choice_template)
+
 
 if __name__ == "__main__":
-    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='추천일정_Template')
+    # file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='추천일정_Template')
+    file = pd.read_excel('Temporary Work.xlsx', sheet_name='성향파악_질문선택지_template')
+    file = pd.read_excel('Temporary Work.xlsx')
+    # file.sheet_name
+    print(file.__dict__)
+
     # get_rows()
     # get_columns(file)
     # create_csv_with_tags()
     # update_tags(file)
-    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='01.기본분류')
-    get_kkday_tags(file)
+    # get_kkday_tags(file)
+    # parse_tendency_question(file)
