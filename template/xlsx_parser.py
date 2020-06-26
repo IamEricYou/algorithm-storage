@@ -224,12 +224,27 @@ def parse_tendency_question(f):
                 choices.append(choice_template)
 
 
+def get_tendency_tags(f):
+    file = f.values.tolist()
+    description_column_index = f.columns.get_loc('description')
+    for each_row in file:
+        v = each_row[description_column_index-4]
+        if type(v) == float and np.isnan(v):
+            continue
+        
+        print(each_row[description_column_index-4])
+
+def get_current_data(f):
+    file = f.values.tolist()
+    print(file)
+
+FILE = 'Temporary Work.xlsx'
 if __name__ == "__main__":
-    # file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='추천일정_Template')
-    file = pd.read_excel('Temporary Work.xlsx', sheet_name='성향파악_질문선택지_template')
-    file = pd.read_excel('Temporary Work.xlsx')
+    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='03. POI(TOPAS+TRAVELFLAN)')
+    # file = pd.read_excel('Temporary Work.xlsx', sheet_name='성향파악_질문선택지_template')
+
     # file.sheet_name
-    print(file.__dict__)
+    # print(file.__dict__)  
 
     # get_rows()
     # get_columns(file)
@@ -237,3 +252,5 @@ if __name__ == "__main__":
     # update_tags(file)
     # get_kkday_tags(file)
     # parse_tendency_question(file)
+    # get_tendency_tags(file)
+    get_current_data(file)
