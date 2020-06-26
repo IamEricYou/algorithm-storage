@@ -236,11 +236,31 @@ def get_tendency_tags(f):
 
 def get_current_data(f):
     file = f.values.tolist()
-    print(file)
+    print(f['TOPAS - TAG'][1])
+
+
+# POI -> COMMON
+# EXIST -> POI
+# 상품 -> POI
+
+def check_value_is_not_nan(val):
+    if type(val) == float and np.isnan(val):
+        return False
+    return True
+
+def parse_tags(f):
+    count = 0
+    for each_row in f.values.tolist():
+        if check_value_is_not_nan(each_row[5]) or count == 5:
+            print(each_row[5])
+
+        count += 1 
+
 
 FILE = 'Temporary Work.xlsx'
+SHEET_NAME = '02.01 TAG-SEARCH WORD'
 if __name__ == "__main__":
-    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='03. POI(TOPAS+TRAVELFLAN)')
+    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name=SHEET_NAME)
     # file = pd.read_excel('Temporary Work.xlsx', sheet_name='성향파악_질문선택지_template')
 
     # file.sheet_name
@@ -253,4 +273,5 @@ if __name__ == "__main__":
     # get_kkday_tags(file)
     # parse_tendency_question(file)
     # get_tendency_tags(file)
-    get_current_data(file)
+    # get_current_data(file)
+    parse_tags(file)
