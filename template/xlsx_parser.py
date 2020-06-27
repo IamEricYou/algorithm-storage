@@ -252,10 +252,37 @@ def parse_tags(f):
     count = 0
     for each_row in f.values.tolist():
         if check_value_is_not_nan(each_row[5]) or count == 5:
-            print(each_row[5])
+            for i in range(5,len(each_row)):
+                if check_value_is_not_nan(each_row[i]):
+                    # do something
+                    print(each_row[i])
+            break
+        
 
-        count += 1 
+def compare_tags():
+    file1 = pd.read_excel('02.99 Categorization.xlsx', sheet_name='03. POI(TOPAS+TRAVELFLAN)')
+    file2 = pd.read_excel('02.99 Categorization.xlsx', sheet_name='02.01 TAG-SEARCH WORD')
 
+    poi_col = replace_nan_to_empty(file1[file1.columns[9]])
+    tag_col = replace_nan_to_empty(file2[file2.columns[2]])
+
+    for each_tag in tag_col:
+        if each_tag == 'empty':
+            continue
+        
+        if each_tag in poi_col:
+            print("this goes in poi")
+        else:
+            print("this goes in common")
+
+    print(tag_col)
+
+def update_synonym():
+    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='02.01 TAG-SEARCH WORD')
+    col = replace_nan_to_empty(file2[file2.columns[2]])
+
+    for item in col:
+        pass
 
 FILE = 'Temporary Work.xlsx'
 SHEET_NAME = '02.01 TAG-SEARCH WORD'
@@ -274,4 +301,6 @@ if __name__ == "__main__":
     # parse_tendency_question(file)
     # get_tendency_tags(file)
     # get_current_data(file)
-    parse_tags(file)
+    # parse_tags(file)
+    # compare_tags()
+    update_synonym()
