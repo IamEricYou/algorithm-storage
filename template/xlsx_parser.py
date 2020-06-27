@@ -278,11 +278,12 @@ def compare_tags():
     print(tag_col)
 
 def update_synonym():
-    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='02.01 TAG-SEARCH WORD')
-    col = replace_nan_to_empty(file2[file2.columns[2]])
+    file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='03. POI(TOPAS+TRAVELFLAN)')
 
-    for item in col:
-        pass
+    for each_row in file.values.tolist():
+        print(each_row)
+        
+    
 
 FILE = 'Temporary Work.xlsx'
 SHEET_NAME = '02.01 TAG-SEARCH WORD'
