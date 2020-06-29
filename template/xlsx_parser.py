@@ -284,8 +284,28 @@ def update_synonym():
         print(each_row)
         
     
+def update_input_entity():
+    f = pd.read_excel('translation.xlsx', sheet_name='kkday_ie')
 
-FILE = 'Temporary Work.xlsx'
+    new_header = f.iloc[0] 
+    f = f[1:]
+    f.columns = new_header
+    file = f.values.tolist()
+
+    id_col = f.columns.get_loc('id')
+    sn_col = f.columns.get_loc('sn')
+    ko_col = f.columns.get_loc('ko_KR')
+    ko_extra_col = f.columns.get_loc('ko_KR__extra_info')
+    print(ko_extra_col)
+    return 
+    for row in file:
+        row_id = row[id_col]
+        sn = row[sn_col]
+        ko = row[ko_col]
+        ko_extra = row[ko_extra_col]
+
+
+FILE = 'translation.xlsx'
 SHEET_NAME = '02.01 TAG-SEARCH WORD'
 if __name__ == "__main__":
     file = pd.read_excel('02.99 Categorization.xlsx', sheet_name=SHEET_NAME)
@@ -304,4 +324,5 @@ if __name__ == "__main__":
     # get_current_data(file)
     # parse_tags(file)
     # compare_tags()
-    update_synonym()
+    # update_synonym()
+    update_input_entity()
