@@ -305,6 +305,24 @@ def update_input_entity():
         ko_extra = row[ko_extra_col]
 
 
+def update_voucher():
+    f = pd.read_excel('트래블플랜X찜카 이용권 5만원_쿠폰핀.xlsx', sheet_name='Sheet1')
+    
+    new_header = f.iloc[0] 
+    f = f[1:]
+    f.columns = new_header
+
+    voucher_col = f.columns.get_loc('쿠폰명')
+    serial_col = f.columns.get_loc('시리얼 넘버')
+    product_sn = 'SE_TFP_31' # 50000
+    option_sn = 'SE_TFP_31_opt1' # 50000
+    is_used = False
+
+    for row in f.values.tolist():
+        print(row[serial_col])
+
+
+
 FILE = 'translation.xlsx'
 SHEET_NAME = '02.01 TAG-SEARCH WORD'
 if __name__ == "__main__":
@@ -325,4 +343,5 @@ if __name__ == "__main__":
     # parse_tags(file)
     # compare_tags()
     # update_synonym()
-    update_input_entity()
+    # update_input_entity()
+    update_voucher()
