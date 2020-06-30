@@ -43,3 +43,7 @@ select fpoi.vendor_link, flanb_poi.code from flanb_point_of_interest fpoi left j
 select count(*) from flanb_point_of_interest fpoi where category='RTR' and meta ->> 'categories' is not null;
 
 
+-- print all selected id where those condition is met.
+select * from flanb_product_detail where product_id in (
+select id from flanb_product where sn like 'kkday_v3%' order by update_dt desc
+) and language_id = 1;
