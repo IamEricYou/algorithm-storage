@@ -304,7 +304,6 @@ def update_input_entity():
         ko = row[ko_col]
         ko_extra = row[ko_extra_col]
 
-
 def update_voucher():
     f = pd.read_excel('트래블플랜X찜카 이용권 5만원_쿠폰핀.xlsx', sheet_name='Sheet1')
     
