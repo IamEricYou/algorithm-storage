@@ -2,9 +2,11 @@ import pandas as pd
 import numpy as np
 import csv
 
+
 # Replace np.nan value with "empty" string in list.
 def replace_nan_to_empty(column_list):
     return list(column_list.replace(np.nan, 'empty', regex=True))
+
 
 CITY_NAME_KR_TO_EN = {
     '타이베이': 'Taipei',
@@ -23,18 +25,19 @@ TENDENCY_CODES = (
     'REED', 'ACE', 'ACP', 'ANE', 'ANP', 'SCE', 'SCP', 'SNE', 'SNP'
 )
 
+
 def get_poi_id_from_item(item):
     vendor_id, vendor_uid = item.split('_')[0], item.split('_')[1]
     print(vendor_id, vendor_uid)
 
+
 def get_rows():
     file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='추천일정_Template')
-    
+
     # prod_name_list = replace_nan_to_empty(file)
     # prod_name_list = list(filter(('empty').__ne__, prod_name_list)) #remove empty
 
-
-    file_list = file.values.tolist() # this can make df to list
+    file_list = file.values.tolist()  # this can make df to list
     for item in file_list:
         # if item[0] == 8:
         #     break
@@ -72,7 +75,7 @@ def get_rows():
             if item[idx] is np.nan:
                 break
             item_count += 1
-        for i in range(12, 12+item_count):
+        for i in range(12, 12 + item_count):
             print(int(item[10]), item[11], item[i])
 
         # print(tendency_codes)
@@ -85,16 +88,18 @@ def get_rows():
 
     # file.rows doens't work
 
+
 def create_csv_with_tags():
     tags = ['num', 'str']
-    temp_a = [1,2,3,4,5]
-    temp_b = ['a','b','c','d','e']
+    temp_a = [1, 2, 3, 4, 5]
+    temp_b = ['a', 'b', 'c', 'd', 'e']
 
     with open('hello.txt', 'w') as f:
         file = csv.writer(f, delimiter=',')
         file.writerow(tags)
         file.writerow(temp_a)
         file.writerow(temp_b)
+
 
 def validate_tags(tag_name):
     if 'ps_' in tag_name:
@@ -116,7 +121,7 @@ def validate_tags(tag_name):
         return False
 
     if tag_name == '태그이름(exist poi가 아닐때는 태그 이름으로)':
-        return  False
+        return False
 
     return True
 
@@ -128,14 +133,15 @@ def update_tags(file):
             tag_column = replace_nan_to_empty(file[item])
             for each_tag in tag_column:
                 tag_list.append(each_tag) if validate_tags(each_tag) else None
-    
+
     # Some tags, which are same but have different space in the word, are manually removed
     tag_list = list(set(tag_list))
     for tag in tag_list:
         print(''.join(x.lower() for x in tag if not x.isspace()))
     print(tag_list)
 
-# 하노키빌리지, 타이베이 101 전망대, 타이베이 101 쇼핑몰, 스무시하우스,  
+
+# 하노키빌리지, 타이베이 101 전망대, 타이베이 101 쇼핑몰, 스무시하우스,
 def get_columns(file):
     print(file.columns)
     print(str(file.columns))
@@ -145,23 +151,25 @@ def get_columns(file):
 
 def get_kkday_tags(file):
     file_list = file.values.tolist()
-    
+
     for line in file_list:
         del line[0]
         del line[0]
 
     print(file_list)
-    return 
+    return
     for item in file_list:
         item = item[2:]
         print(item[1:])
+
 
 def get_tendency_list_index(f, li):
     index_list = []
     for item in li:
         index_list.append(f.columns.get_loc(item))
-    
+
     return index_list
+
 
 def parse_tendency_question(f):
     q_code_index = f.columns.get_loc('question_code (질문 코드)')
@@ -172,7 +180,8 @@ def parse_tendency_question(f):
 
     tc = ['budget_01', 'travel_purpose_02']
     ic = ['landscape_03', 'activity_04', 'food_05']
-    tendency_list = ['luxurious', 'lowbudget', 'active', 'static', 'city', 'nature ', 'foodtour', 'proactive', 'passive', 'food_tags']
+    tendency_list = ['luxurious', 'lowbudget', 'active', 'static', 'city', 'nature ', 'foodtour', 'proactive',
+                     'passive', 'food_tags']
     tendency_list_index = get_tendency_list_index(f, tendency_list)
 
     code_list = replace_nan_to_empty(f['question_code (질문 코드)'])
@@ -187,11 +196,11 @@ def parse_tendency_question(f):
             # Get all rows by corresponding code
             if each_row[q_code_index] == each_code:
                 each_code_list.append(each_row)
-        
+
         for item in each_code_list:
             if each_code in tc:
                 order_no = f.columns.get_loc('choice_order (선택지 순서)')
-                choice_template =  {
+                choice_template = {
                     "key": item[choice_key_index],
                     "text": "Empty for now",
                     "order": int(item[order_no]),
@@ -205,14 +214,14 @@ def parse_tendency_question(f):
                 tendency_points = {}
                 extra_tags = {}
                 for idx, each_idx in enumerate(tendency_list_index):
-                    if type(item[each_idx]) == float and np.isnan(item[each_idx]): # if this is nan value
+                    if type(item[each_idx]) == float and np.isnan(item[each_idx]):  # if this is nan value
                         continue
                     if tendency_list[idx] == 'food_tags':
                         splitted_food_type = item[each_idx].split(',')
                         for each_food_type in splitted_food_type:
-                            tendency_points.update({each_food_type:1})
+                            tendency_points.update({each_food_type: 1})
                         continue
-                    tendency_points.update({tendency_list[idx]: item[each_idx]}) 
+                    tendency_points.update({tendency_list[idx]: item[each_idx]})
 
                 choice_template = {
                     'key': item[choice_key_index],
@@ -228,11 +237,12 @@ def get_tendency_tags(f):
     file = f.values.tolist()
     description_column_index = f.columns.get_loc('description')
     for each_row in file:
-        v = each_row[description_column_index-4]
+        v = each_row[description_column_index - 4]
         if type(v) == float and np.isnan(v):
             continue
-        
-        print(each_row[description_column_index-4])
+
+        print(each_row[description_column_index - 4])
+
 
 def get_current_data(f):
     file = f.values.tolist()
@@ -248,16 +258,17 @@ def check_value_is_not_nan(val):
         return False
     return True
 
+
 def parse_tags(f):
     count = 0
     for each_row in f.values.tolist():
         if check_value_is_not_nan(each_row[5]) or count == 5:
-            for i in range(5,len(each_row)):
+            for i in range(5, len(each_row)):
                 if check_value_is_not_nan(each_row[i]):
                     # do something
                     print(each_row[i])
             break
-        
+
 
 def compare_tags():
     file1 = pd.read_excel('02.99 Categorization.xlsx', sheet_name='03. POI(TOPAS+TRAVELFLAN)')
@@ -269,7 +280,7 @@ def compare_tags():
     for each_tag in tag_col:
         if each_tag == 'empty':
             continue
-        
+
         if each_tag in poi_col:
             print("this goes in poi")
         else:
@@ -277,17 +288,18 @@ def compare_tags():
 
     print(tag_col)
 
+
 def update_synonym():
     file = pd.read_excel('02.99 Categorization.xlsx', sheet_name='03. POI(TOPAS+TRAVELFLAN)')
 
     for each_row in file.values.tolist():
         print(each_row)
-        
-    
+
+
 def update_input_entity():
     f = pd.read_excel('translation.xlsx', sheet_name='kkday_ie')
 
-    new_header = f.iloc[0] 
+    new_header = f.iloc[0]
     f = f[1:]
     f.columns = new_header
     file = f.values.tolist()
@@ -297,29 +309,29 @@ def update_input_entity():
     ko_col = f.columns.get_loc('ko_KR')
     ko_extra_col = f.columns.get_loc('ko_KR__extra_info')
     print(ko_extra_col)
-    return 
+    return
     for row in file:
         row_id = row[id_col]
         sn = row[sn_col]
         ko = row[ko_col]
         ko_extra = row[ko_extra_col]
 
+
 def update_voucher():
     f = pd.read_excel('트래블플랜X찜카 이용권 5만원_쿠폰핀.xlsx', sheet_name='Sheet1')
-    
-    new_header = f.iloc[0] 
+
+    new_header = f.iloc[0]
     f = f[1:]
     f.columns = new_header
 
     voucher_col = f.columns.get_loc('쿠폰명')
     serial_col = f.columns.get_loc('시리얼 넘버')
-    product_sn = 'SE_TFP_31' # 50000
-    option_sn = 'SE_TFP_31_opt1' # 50000
+    product_sn = 'SE_TFP_31'  # 50000
+    option_sn = 'SE_TFP_31_opt1'  # 50000
     is_used = False
 
     for row in f.values.tolist():
         print(row[serial_col])
-
 
 
 FILE = 'translation.xlsx'
