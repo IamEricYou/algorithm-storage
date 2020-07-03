@@ -1,0 +1,36 @@
+
+
+// https://b2d.kkday.com/api/v3/Product/QueryPackage
+
+{
+    "prod_no": "34670",
+    "locale": "ko",
+    "state": "KR",
+    "pkg_no": "148025"
+    // "pkg_no": "131471",
+    // "go_date": "2020-07-06",
+    // "event_time": "08:00"
+}
+
+
+// https://b2d.kkday.com/api/v3/Product/QueryProduct
+{
+    "prod_no": "35322",
+    "locale": "ko",
+    "state": "ko"
+}
+
+
+// https://b2d.kkday.com/api/v3/Product/QueryBackupEvent
+{
+    "pkg_no": "148025",
+    "event_time": "11:30",
+    "go_date": "2020-07-04",
+    "sku": [
+        {
+          "sku_id": "c1bcdbc3a8b430c87caa61bbb310daac",
+          "qty": 4
+        }
+      ]
+}
+
