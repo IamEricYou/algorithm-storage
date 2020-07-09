@@ -47,3 +47,7 @@ select count(*) from flanb_point_of_interest fpoi where category='RTR' and meta 
 select * from flanb_product_detail where product_id in (
 select id from flanb_product where sn like 'kkday_v3%' order by update_dt desc
 ) and language_id = 1;
+
+-- Search with regex / wildcard
+select * from flanb_product_input_entity fpie where sn ~ 'klook_entity_13';
+
