@@ -27,7 +27,10 @@ adjustment = {
 def most_frequent_count(li):
     return max(set(li), key=li.count)
 
+def test_product(l: list):
+    print(f"here {l}")
 
 if __name__ == '__main__':
-    temp = [10, 20, 10, 40, 40, 40, 50]
-    print(most_frequent_count(temp))
+    #temp = [10, 20, 10, 40, 40, 40, 50]
+    #print(most_frequent_count(temp))
+    test_product(12)
