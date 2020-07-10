@@ -51,3 +51,5 @@ select id from flanb_product where sn like 'kkday_v3%' order by update_dt desc
 -- Search with regex / wildcard
 select * from flanb_product_input_entity fpie where sn ~ 'klook_entity_13';
 
+-- Search with group by its count
+select product_id , count(*) from flanb_review group by product_id order by count(*) desc;
