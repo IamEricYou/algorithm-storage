@@ -17,3 +17,15 @@ l = 'http://kf.salti.co.kr/api/cms_api_order_info.php?order_info={%22order_num%2
 r = requests.get(l)
 # print(r.content)
 print(r.text)
+
+d = {"result_code":"0000","result_msg":"조회성공[미사용]","use_chk":"N"}
+
+print(type(d))
+
+d = json.dumps(d, ensure_ascii=False)
+print(type(d))
+print(d)
+
+d = json.loads(d)
+
+print(type(d['result_code']))
