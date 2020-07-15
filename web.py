@@ -23,6 +23,7 @@ d = {"result_code":"0000","result_msg":"조회성공[미사용]","use_chk":"N"}
 print(type(d))
 
 d = json.dumps(d, ensure_ascii=False)
+print(d)
 print(type(d))
 print(d)
 

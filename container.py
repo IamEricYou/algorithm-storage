@@ -1,5 +1,6 @@
 from collections import ChainMap
 from collections import Counter
+import json
 
 baseline = {
     'music': 'bach',
@@ -33,4 +34,13 @@ def test_product(l: list):
 if __name__ == '__main__':
     #temp = [10, 20, 10, 40, 40, 40, 50]
     #print(most_frequent_count(temp))
-    test_product(12)
+    # test_product(12)
+    
+    a = {
+        "1": "2",
+        "3": "4"
+    }
+    
+    print(a)
+    print(json.dumps(a,separators=(',', ':')))
+    
