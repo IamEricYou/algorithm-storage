@@ -53,3 +53,7 @@ select * from flanb_product_input_entity fpie where sn ~ 'klook_entity_13';
 
 -- Search with group by its count
 select product_id , count(*) from flanb_review group by product_id order by count(*) desc;
+
+-- Query by specific type casting
+SELECT * FROM flanb_product WHERE CAST(display_price ->> 'KRW' AS float) = 999999999 AND sn ~ 'kkday_prod_v3';
+
