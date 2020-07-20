@@ -57,3 +57,9 @@ select product_id , count(*) from flanb_review group by product_id order by coun
 -- Query by specific type casting
 SELECT * FROM flanb_product WHERE CAST(display_price ->> 'KRW' AS float) = 999999999 AND sn ~ 'kkday_prod_v3';
 
+
+-- COUNT its duplicates
+select id, PATH, sn, name, parent_id, display_word from flanb_tag_system fts where sn in (
+    select sn from flanb_tag_system
+    group by sn having count(*) > 1
+) ORDER BY sn desc;
