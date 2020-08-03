@@ -63,3 +63,6 @@ select id, PATH, sn, name, parent_id, display_word from flanb_tag_system fts whe
     select sn from flanb_tag_system
     group by sn having count(*) > 1
 ) ORDER BY sn desc;
+
+-- Check if the value is in the array
+SELECT id FROM flanb_product WHERE sn ~ 'kkday_v3_' AND platforms @> ARRAY[20]::int[] 
