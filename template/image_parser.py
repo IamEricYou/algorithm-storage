@@ -17,11 +17,12 @@ def parse_ara_v2_image_extension_to_jpeg(iamge_file):
     return parsed_file_name
 
 def resize_images_in_dir():
-    LOCAL_PATH = "/storage/temp/temp_file/"
+    LOCAL_PATH = "96"
     result = list(Path(LOCAL_PATH).rglob('*.[j][p][e][g]'))
+    print(len(result))
     success_list = []
-    size = 70, 70
-    BASE_SIZE = 200
+    size = 112, 112
+    BASE_SIZE = 112
     ABSOLUTE_SIZE = 330, 330 # Change image to square
     for each_jpg in result:
         if '/mobile/' in str(each_jpg):
@@ -44,6 +45,7 @@ def resize_images_in_dir():
         parsed_file_name = str(each_jpg).split('/')
         parsed_file_name.insert(len(parsed_file_name)-1, 'mobile')
         parsed_file_name = '/'.join(parsed_file_name)
+        parsed_file_name = parsed_file_name.lower().replace('.jpg', '.jpeg')
         img.save(parsed_file_name, 'JPEG')
         print(len(success_list))
 
@@ -139,6 +141,7 @@ def replace_image_extension_to_jpeg():
             print(city_obj.id)
             # city_obj.save()
             
+
 if __name__ == "__main__":
     # with open('temp.json') as f:
     #     data = json.load(f)
