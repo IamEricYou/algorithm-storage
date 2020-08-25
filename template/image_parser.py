@@ -17,34 +17,39 @@ def parse_ara_v2_image_extension_to_jpeg(iamge_file):
     return parsed_file_name
 
 def resize_images_in_dir():
-    LOCAL_PATH = "96"
-    result = list(Path(LOCAL_PATH).rglob('*.[j][p][e][g]'))
-    print(len(result))
+    LOCAL_PATH = "."
+    result = list(Path(LOCAL_PATH).rglob('*.[Jj][Pp][Gg]')) # for jpg
+    # result = list(Path(LOCAL_PATH).rglob('*.[Jj][Pp][Ee][Gg]')) # for jpeg
+    print(result)
     success_list = []
-    size = 112, 112
+    size = 122, 122
     BASE_SIZE = 112
     ABSOLUTE_SIZE = 330, 330 # Change image to square
+    mobile_flag = False
     for each_jpg in result:
         if '/mobile/' in str(each_jpg):
             continue
 
         img = Image.open(each_jpg)
         width, height = img.size
-        if width > height:
-            ratio = width / height
-            size = (int(BASE_SIZE * ratio), BASE_SIZE)
-        else:
-            ratio = height /width
-            size = (BASE_SIZE, int(BASE_SIZE * ratio))
+        # if width > height:
+        #     ratio = width / height
+        #     size = (int(BASE_SIZE * ratio), BASE_SIZE)
+        # else:
+        #     ratio = height / width
+        #     size = (BASE_SIZE, int(BASE_SIZE * ratio))
 
         if img.mode in ("RGBA", "P"):
             img = img.convert("RGB")
 
-        img.thumbnail(size, Image.ANTIALIAS)
+        # img.thumbnail(size, Image.ANTIALIAS)
         success_list.append(each_jpg)
-        parsed_file_name = str(each_jpg).split('/')
-        parsed_file_name.insert(len(parsed_file_name)-1, 'mobile')
-        parsed_file_name = '/'.join(parsed_file_name)
+        if mobile_flag:
+            parsed_file_name = str(each_jpg).split('/')
+            parsed_file_name.insert(len(parsed_file_name)-1, 'mobile')
+            parsed_file_name = '/'.join(parsed_file_name)
+        else:
+            parsed_file_name = str(each_jpg)
         parsed_file_name = parsed_file_name.lower().replace('.jpg', '.jpeg')
         img.save(parsed_file_name, 'JPEG')
         print(len(success_list))
