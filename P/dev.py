@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# the above line will indicate the interpreter of python 
 def solution(p, s):
     answer = 13
     for i in range(0, len(p)):

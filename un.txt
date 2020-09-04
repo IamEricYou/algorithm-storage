@@ -1,0 +1,780 @@
+free_cancel = (9418, 9401, 8721, 8695, 9398)
+cannot_cancel = (9424, 8727, 8718, 8677, 9393)
+cancel_with_cancellation_fee = (8657, 9419, 8660, 8666)
+
+
+Experience Location only = (9330, 8753, 8754, 8755, 8748, 8756)
+Meeting Location only = (8822, 8775, 8908, 8912, 8914, 9069, 8965, 8987)
+Experience location and meeting location = (8749, 8751, 8752, 8758, 8854, 8855)
+
+Service language = (9436, 9430, 9427, 9426, 9425)
+duration hours = (9436, 9427, 9426, 9425, 9424)
+
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/1_danshui_old_street.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/2_museum.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/3_ferry.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/4_taroko_national_park.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/5_peking_opera.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/6_aquarium.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/7_sunset_at_beach.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/8_stores.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/9_traditional_performance.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/10_taipei_101_night_view.jpeg
+
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/1_steak.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/2_salad.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/3_lobsters.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/4_sushi.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/5_cake_cookies_desert_2.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/6_beer_wine.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/7_dimsum.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/8_stinky_tofu.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/9_oyster_octopus.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/10_coffee_ice_cream.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/11_miso_soup_kimchi.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/12_pork_belly.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/13_rice_noodle.jpeg
+https://flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/14_cup_ramen.jpeg
+
+
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/1_scuba_diving.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/2_rock_climbing.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/3_zip_line.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/4_camping.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/5_tracking.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/6_massage.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/7_club.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/8_wood_working.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/9_sky_lantern.jpeg
+https://flanb-data-test-global.travelflan.comtopas/user-tendency/activity_04/10_spa.jpeg
+
+
+Sight
+[
+  {
+    "key": "A",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/1_danshui_old_street.jpeg",
+    "extra_tags": [
+      "라오제"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "active": 1
+    }
+  },
+  {
+    "key": "B",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/2_museum.jpeg",
+    "extra_tags": [
+      "Watch"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "C",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/3_ferry.jpeg",
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "D",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/4_taroko_national_park.jpeg",
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "E",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/5_peking_opera.jpeg",
+    "extra_tags": [
+      "Watch"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "F",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/6_aquarium.jpeg",
+    "extra_tags": [
+      "Watch"
+    ],
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "G",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/7_sunset_at_beach.jpeg",
+    "extra_tags": [
+      "night"
+    ],
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "H",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/8_stores.jpeg",
+    "extra_tags": [
+      "shopping"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "active": 1
+    }
+  },
+  {
+    "key": "I",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/9_traditional_performance.jpeg",
+    "extra_tags": [
+      "traditional"
+    ],
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "J",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/10_taipei_101_night_view.jpeg",
+    "extra_tags": [
+      "night"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  }
+]
+
+Food
+[
+  {
+    "key": "A",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/1_steak.jpeg",
+    "tendency_points": {
+      "Meat": 1
+    }
+  },
+  {
+    "key": "B",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/2_salad.jpeg",
+    "tendency_points": {
+      "채식": 1
+    }
+  },
+  {
+    "key": "C",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/3_lobsters.jpeg",
+    "tendency_points": {
+      "Seafood": 1
+    }
+  },
+  {
+    "key": "D",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/4_sushi.jpeg",
+    "tendency_points": {
+      "RawFood": 1
+    }
+  },
+  {
+    "key": "E",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/5_cake_cookies_desert_2.jpeg",
+    "tendency_points": {
+      "Cafe/Dessert/Bakery": 1
+    }
+  },
+  {
+    "key": "F",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/6_beer_wine.jpeg",
+    "extra_tags": [
+      "night"
+    ],
+    "tendency_points": {
+      "Alchol": 1
+    }
+  },
+  {
+    "key": "G",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/7_dimsum.jpeg",
+    "extra_tags": [
+      "Dumpling"
+    ],
+    "tendency_points": {
+      "local": 1
+    }
+  },
+  {
+    "key": "H",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/8_stinky_tofu.jpeg",
+    "tendency_points": {
+      "CBC": 1
+    }
+  },
+  {
+    "key": "I",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/9_oyster_octopus.jpeg",
+    "tendency_points": {
+      "CBC": 1,
+      "RawFood": 1
+    }
+  },
+  {
+    "key": "J",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/10_coffee_ice_cream.jpeg",
+    "tendency_points": {
+      "Cafe/Dessert/Bakery": 1
+    }
+  },
+  {
+    "key": "K",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/11_miso_soup_kimchi.jpeg",
+    "extra_tags": [
+      "TraditionalKorea"
+    ],
+    "tendency_points": {
+      "Meat": 1
+    }
+  },
+  {
+    "key": "L",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/12_pork_belly.jpeg",
+    "tendency_points": {
+      "Meat": 1
+    }
+  },
+  {
+    "key": "N",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/13_rice_noodle.jpeg",
+    "extra_tags": [
+      "쌀국수"
+    ],
+    "tendency_points": {
+      "local": 1
+    }
+  },
+  {
+    "key": "M",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/14_cup_ramen.jpeg",
+    "extra_tags": [
+      "InstantNoodle"
+    ],
+    "tendency_points": {
+      "Cafe/Dessert/Bakery": 1
+    }
+  }
+]
+
+Play
+[
+  {
+    "key": "A",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/1_scuba_diving.jpeg",
+    "extra_tags": [
+      "aquasports"
+    ],
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "B",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/2_rock_climbing.jpeg",
+    "extra_tags": [
+      "extreme"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "active": 1
+    }
+  },
+  {
+    "key": "C",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/3_zip_line.jpeg",
+    "extra_tags": [
+      "extreme"
+    ],
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "D",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/4_camping.jpeg",
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "E",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/5_tracking.jpeg",
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "F",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/6_massage.jpeg",
+    "extra_tags": [
+      "Health&Wellness"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "G",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/7_club.jpeg",
+    "extra_tags": [
+      "night Alcohol"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "active": 1
+    }
+  },
+  {
+    "key": "H",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/8_wood_working.jpeg",
+    "extra_tags": [
+      "DIY"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "I",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/9_sky_lantern.jpeg",
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "J",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/10_spa.jpeg",
+    "extra_tags": [
+      "Health&Wellness"
+    ],
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  }
+]
+
+
+------------------------ORIGINAL-------------------------
+
+[
+  {
+    "key": "A",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/1.라오제옛거리사진.jpeg",
+    "extra_tags": [
+      "라오제"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "active": 1
+    }
+  },
+  {
+    "key": "B",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/2.박물관전시물을관람하고있는사진.jpeg",
+    "extra_tags": [
+      "Watch"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "C",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/3.페리유람선사진.jpeg",
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "D",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/4.타이루거국립공원사진.jpeg",
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "E",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/5.경극사진.jpeg",
+    "extra_tags": [
+      "Watch"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "F",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/6.수조관사진.jpeg",
+    "extra_tags": [
+      "Watch"
+    ],
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "G",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/7.해변가저녁노을사진.jpeg",
+    "extra_tags": [
+      "night"
+    ],
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "H",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/8.상점들많은사진.jpeg",
+    "extra_tags": [
+      "shopping"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "active": 1
+    }
+  },
+  {
+    "key": "I",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/9.원주민전통공연사진.jpeg",
+    "extra_tags": [
+      "traditional"
+    ],
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "J",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/landscape_03/10.타이베이101야경사진.jpeg",
+    "extra_tags": [
+      "night"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  }
+]
+
+[
+  {
+    "key": "A",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/1스쿠버.jpeg",
+    "extra_tags": [
+      "aquasports"
+    ],
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "B",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/2암벽.jpeg",
+    "extra_tags": [
+      "extreme"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "active": 1
+    }
+  },
+  {
+    "key": "C",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/3짚라인.jpeg",
+    "extra_tags": [
+      "extreme"
+    ],
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "D",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/4캠프.jpeg",
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "E",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/5트래킹.jpeg",
+    "tendency_points": {
+      "active": 1,
+      "nature": 1
+    }
+  },
+  {
+    "key": "F",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/6마사지.jpeg",
+    "extra_tags": [
+      "Health&Wellness"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "G",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/7클럽.jpeg",
+    "extra_tags": [
+      "night Alcohol"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "active": 1
+    }
+  },
+  {
+    "key": "H",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/9목공예.jpeg",
+    "extra_tags": [
+      "DIY"
+    ],
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "I",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/9풍등.jpeg",
+    "tendency_points": {
+      "city": 1,
+      "static": 1
+    }
+  },
+  {
+    "key": "J",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/activity_04/10온천.jpeg",
+    "extra_tags": [
+      "Health&Wellness"
+    ],
+    "tendency_points": {
+      "nature": 1,
+      "static": 1
+    }
+  }
+]
+
+[
+  {
+    "key": "A",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/1.스테이크.jpeg",
+    "tendency_points": {
+      "Meat": 1
+    }
+  },
+  {
+    "key": "B",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/2.야채셀러드사진.jpeg",
+    "tendency_points": {
+      "채식": 1
+    }
+  },
+  {
+    "key": "C",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/3.랍스타구운생선요리사진.jpeg",
+    "tendency_points": {
+      "Seafood": 1
+    }
+  },
+  {
+    "key": "D",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/4.생선회요리.jpeg",
+    "tendency_points": {
+      "RawFood": 1
+    }
+  },
+  {
+    "key": "E",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/5.케익쿠키디저트사진2.jpeg",
+    "tendency_points": {
+      "Cafe/Dessert/Bakery": 1
+    }
+  },
+  {
+    "key": "F",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/6.맥주와인사진.jpeg",
+    "extra_tags": [
+      "night"
+    ],
+    "tendency_points": {
+      "Alchol": 1
+    }
+  },
+  {
+    "key": "G",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/7.딤섬사진.jpeg",
+    "extra_tags": [
+      "Dumpling"
+    ],
+    "tendency_points": {
+      "local": 1
+    }
+  },
+  {
+    "key": "H",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/8.취두부사진.jpeg",
+    "tendency_points": {
+      "CBC": 1
+    }
+  },
+  {
+    "key": "I",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/9.생굴산낙지사진.jpeg",
+    "tendency_points": {
+      "CBC": 1,
+      "RawFood": 1
+    }
+  },
+  {
+    "key": "J",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/10.커피%2B빙수.jpeg",
+    "tendency_points": {
+      "Cafe/Dessert/Bakery": 1
+    }
+  },
+  {
+    "key": "K",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/11.된장찌게%2B김치.jpeg",
+    "extra_tags": [
+      "TraditionalKorea"
+    ],
+    "tendency_points": {
+      "Meat": 1
+    }
+  },
+  {
+    "key": "L",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/12.불판위삼겹살굽는사진.jpeg",
+    "tendency_points": {
+      "Meat": 1
+    }
+  },
+  {
+    "key": "N",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/13.쌀국수사진.jpeg",
+    "extra_tags": [
+      "쌀국수"
+    ],
+    "tendency_points": {
+      "local": 1
+    }
+  },
+  {
+    "key": "M",
+    "order": 0,
+    "img_url": "flanb-data-test-global.travelflan.com/topas/user-tendency/food_05/14.컵라면사진.jpeg",
+    "extra_tags": [
+      "InstantNoodle"
+    ],
+    "tendency_points": {
+      "Cafe/Dessert/Bakery": 1
+    }
+  }
+]
