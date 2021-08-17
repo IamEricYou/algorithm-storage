@@ -20,9 +20,9 @@ def parse_ara_v2_image_extension_to_jpeg(iamge_file):
 
 
 def resize_images_in_dir():
-	LOCAL_PATH = "s3/banner"
-	# result = list(Path(LOCAL_PATH).rglob('*.[Jj][Pp][Gg]'))  # for jpg
-	result = list(Path(LOCAL_PATH).rglob('*.[Pp][Nn][Gg]'))  # for png
+	LOCAL_PATH = "rtr_image"
+	result = list(Path(LOCAL_PATH).rglob('*.[Jj][Pp][Gg]'))  # for jpg
+	# result = list(Path(LOCAL_PATH).rglob('*.[Pp][Nn][Gg]'))  # for png
 	# result = list(Path(LOCAL_PATH).rglob('*.[Jj][Pp][Ee][Gg]')) # for jpeg
 	# print(len(result))
 	success_list = []
@@ -32,44 +32,42 @@ def resize_images_in_dir():
 	ABSOLUTE_SIZE = 330, 330  # Change image to square
 	mobile_flag = True
 	for each_jpg in result:
-		# try:
-		if '/mobile/' in str(each_jpg):
-			continue
-		if '/main/' in str(each_jpg):
-			continue
+		try:
+			if '/mobile/' in str(each_jpg):
+				continue
+			if '/main/' in str(each_jpg):
+				continue
 
-		img = Image.open(each_jpg)
-		m_img = Image.open(each_jpg)
-		width, height = img.size
-		# if width > height:
-		# 	ratio = width / height
-		# 	size = (int(BASE_SIZE * ratio), BASE_SIZE)
-		# else:
-		# 	ratio = height / width
-		# 	size = (BASE_SIZE, int(BASE_SIZE * ratio))
+			img = Image.open(each_jpg)
+			m_img = Image.open(each_jpg)
+			width, height = img.size
+			# if width > height:
+			# 	ratio = width / height
+			# 	size = (int(BASE_SIZE * ratio), BASE_SIZE)
+			# else:
+			# 	ratio = height / width
+			# 	size = (BASE_SIZE, int(BASE_SIZE * ratio))
 
-		if img.mode in ("RGBA", "P"):
-			img = img.convert("RGB")
-			m_img = m_img.convert("RGB")
+			if img.mode in ("RGBA", "P"):
+				img = img.convert("RGB")
+				m_img = m_img.convert("RGB")
 
-		img.thumbnail(BASE_SIZE, Image.ANTIALIAS)
-		m_img.thumbnail(size, Image.ANTIALIAS)
-		success_list.append(each_jpg)
-		parsed_file_name = str(each_jpg).split('/')
-		parsed_file_name.insert(len(parsed_file_name) - 1, 'mobile')
-		parsed_file_name = '/'.join(parsed_file_name)
-		parsed_main_name = str(each_jpg).split('/')
-		parsed_main_name.insert(len(parsed_main_name) - 1, 'main')
-		parsed_main_name = '/'.join(parsed_main_name)
-		# parsed_main_name = parsed_main_name.lower().replace('.jpg', '.jpeg')
-		# parsed_file_name = parsed_file_name.lower().replace('.jpg', '.jpeg')
-		# parsed_main_name = parsed_main_name.lower().replace('.png', '.jpeg')
-		# parsed_file_name = parsed_file_name.lower().replace('.png', '.jpeg')
-		img.save(parsed_main_name)
-		m_img.save(parsed_file_name)
-		print(len(success_list))
-		# except:
-		# 	fail_list.append(each_jpg)
+			img.thumbnail(BASE_SIZE, Image.ANTIALIAS)
+			m_img.thumbnail(size, Image.ANTIALIAS)
+			success_list.append(each_jpg)
+			parsed_file_name = str(each_jpg).split('/')
+			parsed_file_name.insert(len(parsed_file_name) - 1, 'mobile')
+			parsed_file_name = '/'.join(parsed_file_name)
+			parsed_main_name = str(each_jpg).split('/')
+			parsed_main_name.insert(len(parsed_main_name) - 1, 'main')
+			parsed_main_name = '/'.join(parsed_main_name)
+			parsed_main_name = parsed_main_name.lower().replace('.jpg', '.jpeg')
+			parsed_file_name = parsed_file_name.lower().replace('.jpg', '.jpeg')
+			img.save(parsed_main_name, 'JPEG')
+			m_img.save(parsed_file_name, 'JPEG')
+			print(len(success_list))
+		except:
+			fail_list.append(each_jpg)
 		
 	print(fail_list)
 
