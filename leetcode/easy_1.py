@@ -22,11 +22,11 @@ def longestCommonPrefix(strs: List[str]) -> str:
             if c1 == c2:
                 common_str.append(c1)
             else:
-                del common_str[-1]
                 break
         target_str = common_str
     return ''.join(common_str) if common_str else ""
 
 if __name__ == "__main__":
+    # longestCommonPrefix(["aa", "ab"])
     ...
     
