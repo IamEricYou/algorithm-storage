@@ -13,10 +13,8 @@ def solution_1(array, commands):
 # https://programmers.co.kr/learn/courses/30/lessons/42746
 
 def solution_2(numbers):
-    answer = ''
-    number = sum([[i for i in str(n)] for n in numbers], [])
-    n = sorted(number, reverse=True)
-    answer = ''.join(n)
-    return answer
-    
-assert solution_2([6, 10, 2]), "6210"
+    num = [str(i) for i in numbers]
+    return str(int(''.join(sorted(num, key=lambda i: i*10, reverse=True))))
+
+print(solution_2([3, 30, 34, 5, 9]))
+assert solution_2([3, 30, 34, 5, 9]), "9534330"
