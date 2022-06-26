@@ -144,21 +144,38 @@ class Solution:
 
         return True
 
+    # https://leetcode.com/problems/two-sum/
+    def two_sum(self, nums: List[int], target: int) -> List[int]:
+        for idx_i in range(0, len(nums)):
+            for idx_j in range(idx_i + 1, len(nums)):
+                if nums[idx_i] + nums[idx_j] == target:
+                    return [idx_i, idx_j]
+
+        return []
+
+    
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        return nums * 2
+
 if __name__ == "__main__":
-    two = Solution()
+    sol = Solution()
     
-    # print(two.twoSum([1,2,2,7,3,3], 6))
-    # print(two.twoSumByListMethod([1,2,2,7,3,3], 6))
+    # print(sol.twoSum([1,2,2,7,3,3], 6))
+    # print(sol.twoSumByListMethod([1,2,2,7,3,3], 6))
     
-    # print(two.reverse(342))
-    # print(two.reverse(-120))
-    # print(two.reverse(0))
+    # print(sol.reverse(342))
+    # print(sol.reverse(-120))
+    # print(sol.reverse(0))
 
-    # print(two.reverseBits(43261596))
+    # print(sol.reverseBits(43261596))
 
-    # print(two.hammingWeight(11))
+    # print(sol.hammingWeight(11))
     
-    # print(two.isPowerOfTwo(10))
+    # print(sol.isPowerOfTwo(10))
 
-    # print(two.singleNumber([4,4,2,2,1]))
-    print("hi")
+    # print(sol.singleNumber([4,4,2,2,1]))
+    
+    # print(sol.two_sum([3,2,4], 6))
+    # print(sol.two_sum([2,7,11,15], 9))
+
+    assert sol.getConcatenation([1,2,1]) == [1,2,1,1,2,1]
